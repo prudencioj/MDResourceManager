@@ -1,0 +1,14 @@
+PODS:
+  - MDResourceManager (0.1.0)
+
+DEPENDENCIES:
+  - MDResourceManager (from `../`)
+
+EXTERNAL SOURCES:
+  MDResourceManager:
+    :path: ../
+
+SPEC CHECKSUMS:
+  MDResourceManager: b0813fbaccbca97c2bd2a1abe26d58387d6b2e2d
+
+COCOAPODS: 0.35.0
