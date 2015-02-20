@@ -8,6 +8,7 @@
 
 #import "MDViewController.h"
 #import "MDResourceManager.h"
+#import "MDAppDelegate.h"
 
 @interface MDViewController ()
 
@@ -31,7 +32,7 @@
 
 - (void)populateViews {
     
-    MDResourceManager *resourceManager = [[MDResourceManager alloc] init];
+    MDResourceManager *resourceManager = [MDAppDelegate sharedInstance].resourceManager;
     
     CGFloat labelFontSize = [resourceManager floatForKey:@"labelFontSize"];
     self.label.font = [UIFont fontWithName:@"GillSans"

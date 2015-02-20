@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MDResourceManager.h"
 
 @interface MDAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) MDResourceManager *resourceManager;
+
++ (instancetype)sharedInstance;
 
 @end

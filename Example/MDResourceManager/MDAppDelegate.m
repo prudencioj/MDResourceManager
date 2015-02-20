@@ -10,7 +10,18 @@
 
 @implementation MDAppDelegate
 
+static MDAppDelegate * _sharedInstance = nil;
+
++ (instancetype)sharedInstance {
+    return _sharedInstance;
+}
+    
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    _sharedInstance = self;
+
+    self.resourceManager = [[MDResourceManager alloc] init];
+    
     return YES;
 }
 
