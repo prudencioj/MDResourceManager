@@ -7,23 +7,36 @@
 //
 
 #import "MDViewController.h"
+#import "MDResourceManager.h"
 
 @interface MDViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
 
 @implementation MDViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+ 
+    [self populateViews];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)didRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+    [self populateViews];
+}
+
+- (void)populateViews {
+    
+    MDResourceManager *resourceManager = [[MDResourceManager alloc] init];
+    
+    CGFloat labelFontSize = [resourceManager floatForKey:@"labelFontSize"];
+    self.label.font = [UIFont fontWithName:@"GillSans"
+                                      size:labelFontSize];
+    self.label.text = [NSString stringWithFormat:@"Font size %.02f",labelFontSize];
 }
 
 @end
