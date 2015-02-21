@@ -9,6 +9,8 @@
 #import "MDAbstractRule.h"
 #import "MDSmallestWidthRule.h"
 #import "MDOrientationRule.h"
+#import "MDDeviceRule.h"
+#import "MDScreenSizeRule.h"
 
 @implementation MDAbstractRule
 
@@ -18,7 +20,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        rulesClasses = @[[MDSmallestWidthRule class],
+        rulesClasses = @[[MDDeviceRule class],
                          [MDOrientationRule class]
                          ];
     });

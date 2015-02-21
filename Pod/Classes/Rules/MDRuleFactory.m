@@ -9,22 +9,26 @@
 #import "MDRuleFactory.h"
 #import "MDSmallestWidthRule.h"
 #import "MDOrientationRule.h"
+#import "MDDeviceRule.h"
 
 static NSString *const kQualifierPrefixSmallestWidth = @"sw";
 static NSString *const kQualifierPrefixLandscape = @"land";
 static NSString *const kQualifierPrefixPortrait = @"port";
+static NSString *const kQualifierPrefixIphone = @"iphone";
+static NSString *const kQualifierPrefixIpad = @"ipad";
 
 @implementation MDRuleFactory
 
 + (MDAbstractRule *)makeRuleWithQualifier:(NSString *)qualifier {
 
-    if ([qualifier hasPrefix:kQualifierPrefixSmallestWidth]) {
-        
-        return [self makeSmallestWidthRule:qualifier];
-    } else if ([qualifier hasPrefix:kQualifierPrefixLandscape] ||
+    if ([qualifier hasPrefix:kQualifierPrefixLandscape] ||
                [qualifier hasPrefix:kQualifierPrefixPortrait]){
         
         return [self makeOrientationRule:qualifier];
+    } else if ([qualifier hasPrefix:kQualifierPrefixIphone] ||
+               [qualifier hasPrefix:kQualifierPrefixIpad]){
+        
+        return [self makeDeviceRule:qualifier];
     } else {
         
         NSAssert(YES, @"Cannot build rule, invalid qualifier name: %@",qualifier);
@@ -56,4 +60,12 @@ static NSString *const kQualifierPrefixPortrait = @"port";
     return orientationRule;
 }
 
+#pragma mark - OrientationRule
+    
++ (MDDeviceRule *)makeDeviceRule:(NSString *)qualifier {
+        
+    MDDeviceRule *deviceRule = [[MDDeviceRule alloc] initWithDevice:qualifier];
+    return deviceRule;
+}
+    
 @end
