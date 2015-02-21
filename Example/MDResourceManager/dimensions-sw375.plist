@@ -3,6 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>labelFontSize</key>
-	<integer>50</integer>
+	<integer>25</integer>
+	<key>dimension2</key>
+	<integer>5</integer>
 </dict>
 </plist>

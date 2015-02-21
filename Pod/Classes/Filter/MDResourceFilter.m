@@ -82,7 +82,6 @@
 
     __block MDResource *matchingResource = nil;
     __block MDAbstractRule *matchingRule = nil;
-    __block NSInteger matchingIndex = -1;
     __block NSMutableIndexSet *notMatchingIndexes = [[NSMutableIndexSet alloc] init];
     
     [resources enumerateObjectsUsingBlock:^(MDResource *resource, NSUInteger idx, BOOL *stop) {
@@ -110,19 +109,23 @@
             
             if (!matchingRule || [foundRule compare:matchingRule] == NSOrderedAscending) {
             
-                if (matchingIndex >= 0) {
+                if (matchingResource) {
                     
-                    [notMatchingIndexes addIndex:matchingIndex];
+                    NSUInteger indexMatching = [resources indexOfObject:matchingResource];
+                    [notMatchingIndexes addIndex:indexMatching];
                 }
                 
                 matchingRule = foundRule;
                 matchingResource = resource;
-                matchingIndex = idx;
+            } else {
+                
+                [notMatchingIndexes addIndex:idx];
             }
         } else {
             
             [notMatchingIndexes addIndex:idx];
         }
+        
     }];
     
     if (!matchingResource) {

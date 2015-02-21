@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MDResourceManager: b0813fbaccbca97c2bd2a1abe26d58387d6b2e2d
+  MDResourceManager: f587d973401ddfb186a4fc200ba01316ab6b895c
 
 COCOAPODS: 0.35.0

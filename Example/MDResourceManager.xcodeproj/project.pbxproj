@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		4566C37ACD3D2A6F588BAA8D /* libPods-MDResourceManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F74A257C3D40F8336ECAB2 /* libPods-MDResourceManager.a */; };
 		49FF01ED1A97F7AD00A84030 /* dimensions-port.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01E71A97F7AD00A84030 /* dimensions-port.plist */; };
-		49FF01EE1A97F7AD00A84030 /* dimensions-sw200.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01E81A97F7AD00A84030 /* dimensions-sw200.plist */; };
-		49FF01EF1A97F7AD00A84030 /* dimensions-sw300-landscape.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01E91A97F7AD00A84030 /* dimensions-sw300-landscape.plist */; };
-		49FF01F01A97F7AD00A84030 /* dimensions-sw330-landscape.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01EA1A97F7AD00A84030 /* dimensions-sw330-landscape.plist */; };
-		49FF01F11A97F7AD00A84030 /* dimensions-sw300.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01EB1A97F7AD00A84030 /* dimensions-sw300.plist */; };
+		49FF01EE1A97F7AD00A84030 /* dimensions-sw320.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01E81A97F7AD00A84030 /* dimensions-sw320.plist */; };
+		49FF01EF1A97F7AD00A84030 /* dimensions-sw414.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01E91A97F7AD00A84030 /* dimensions-sw414.plist */; };
+		49FF01F01A97F7AD00A84030 /* dimensions-sw768.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01EA1A97F7AD00A84030 /* dimensions-sw768.plist */; };
+		49FF01F11A97F7AD00A84030 /* dimensions-sw375.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01EB1A97F7AD00A84030 /* dimensions-sw375.plist */; };
 		49FF01F21A97F7AD00A84030 /* dimensions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01EC1A97F7AD00A84030 /* dimensions.plist */; };
+		49FF02111A98108300A84030 /* MDSmallestWidthRuleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FF02101A98108300A84030 /* MDSmallestWidthRuleTest.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -46,11 +47,12 @@
 		3E4F603D98F611877C292BF6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		4789182C406CC2B57F860B6B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		49FF01E71A97F7AD00A84030 /* dimensions-port.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-port.plist"; sourceTree = "<group>"; };
-		49FF01E81A97F7AD00A84030 /* dimensions-sw200.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-sw200.plist"; sourceTree = "<group>"; };
-		49FF01E91A97F7AD00A84030 /* dimensions-sw300-landscape.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-sw300-landscape.plist"; sourceTree = "<group>"; };
-		49FF01EA1A97F7AD00A84030 /* dimensions-sw330-landscape.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-sw330-landscape.plist"; sourceTree = "<group>"; };
-		49FF01EB1A97F7AD00A84030 /* dimensions-sw300.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-sw300.plist"; sourceTree = "<group>"; };
+		49FF01E81A97F7AD00A84030 /* dimensions-sw320.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-sw320.plist"; sourceTree = "<group>"; };
+		49FF01E91A97F7AD00A84030 /* dimensions-sw414.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-sw414.plist"; sourceTree = "<group>"; };
+		49FF01EA1A97F7AD00A84030 /* dimensions-sw768.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-sw768.plist"; sourceTree = "<group>"; };
+		49FF01EB1A97F7AD00A84030 /* dimensions-sw375.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-sw375.plist"; sourceTree = "<group>"; };
 		49FF01EC1A97F7AD00A84030 /* dimensions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dimensions.plist; sourceTree = "<group>"; };
+		49FF02101A98108300A84030 /* MDSmallestWidthRuleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSmallestWidthRuleTest.m; sourceTree = "<group>"; };
 		4B372EC0F064E878A01F9C23 /* MDResourceManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MDResourceManager.podspec; path = ../MDResourceManager.podspec; sourceTree = "<group>"; };
 		4F5BF55C55763712949EA3A4 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* MDResourceManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDResourceManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,12 +110,12 @@
 		49FF01E61A97F78800A84030 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				49FF01E71A97F7AD00A84030 /* dimensions-port.plist */,
-				49FF01E81A97F7AD00A84030 /* dimensions-sw200.plist */,
-				49FF01E91A97F7AD00A84030 /* dimensions-sw300-landscape.plist */,
-				49FF01EA1A97F7AD00A84030 /* dimensions-sw330-landscape.plist */,
-				49FF01EB1A97F7AD00A84030 /* dimensions-sw300.plist */,
 				49FF01EC1A97F7AD00A84030 /* dimensions.plist */,
+				49FF01E71A97F7AD00A84030 /* dimensions-port.plist */,
+				49FF01E81A97F7AD00A84030 /* dimensions-sw320.plist */,
+				49FF01EB1A97F7AD00A84030 /* dimensions-sw375.plist */,
+				49FF01E91A97F7AD00A84030 /* dimensions-sw414.plist */,
+				49FF01EA1A97F7AD00A84030 /* dimensions-sw768.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -181,6 +183,7 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				49FF02101A98108300A84030 /* MDSmallestWidthRuleTest.m */,
 				6003F5BB195388D20070C39A /* Tests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
@@ -299,14 +302,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49FF01F01A97F7AD00A84030 /* dimensions-sw330-landscape.plist in Resources */,
+				49FF01F01A97F7AD00A84030 /* dimensions-sw768.plist in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
-				49FF01EE1A97F7AD00A84030 /* dimensions-sw200.plist in Resources */,
+				49FF01EE1A97F7AD00A84030 /* dimensions-sw320.plist in Resources */,
 				6003F5A1195388D20070C39A /* Main.storyboard in Resources */,
-				49FF01EF1A97F7AD00A84030 /* dimensions-sw300-landscape.plist in Resources */,
+				49FF01EF1A97F7AD00A84030 /* dimensions-sw414.plist in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				49FF01F21A97F7AD00A84030 /* dimensions.plist in Resources */,
-				49FF01F11A97F7AD00A84030 /* dimensions-sw300.plist in Resources */,
+				49FF01F11A97F7AD00A84030 /* dimensions-sw375.plist in Resources */,
 				49FF01ED1A97F7AD00A84030 /* dimensions-port.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FF02111A98108300A84030 /* MDSmallestWidthRuleTest.m in Sources */,
 				6003F5BC195388D20070C39A /* Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

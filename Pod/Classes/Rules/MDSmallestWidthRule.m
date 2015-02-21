@@ -37,14 +37,14 @@
     
     if ([rule isKindOfClass:[MDSmallestWidthRule class]]) {
      
-        MDSmallestWidthRule *smallestWidthRule = (MDSmallestWidthRule *)rule;
+        // FIXME TODO proper comparison
         
+        MDSmallestWidthRule *smallestWidthRule = (MDSmallestWidthRule *)rule;
+        NSLog(@"device width %f",self.deviceSmallestWidth);
         CGFloat diff1 = ABS(self.deviceSmallestWidth - self.value);
         CGFloat diff2 = ABS(self.deviceSmallestWidth - smallestWidthRule.value);
-        
-        // TODO proper comparison
-        
-        return [@(diff2) compare:@(diff1)];
+            
+        return [@(diff1) compare:@(diff2)];
     }
     
     return [super compare:rule];
@@ -61,7 +61,7 @@
     
     CGFloat height = CGRectGetHeight([UIScreen mainScreen].bounds);
     CGFloat width = CGRectGetWidth([UIScreen mainScreen].bounds);
-    
+  
     return MIN(height,width);
 }
 
