@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4566C37ACD3D2A6F588BAA8D /* libPods-MDResourceManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F74A257C3D40F8336ECAB2 /* libPods-MDResourceManager.a */; };
-		49FF01F11A97F7AD00A84030 /* dimensions-ipad.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01EB1A97F7AD00A84030 /* dimensions-ipad.plist */; };
+		49FF01F11A97F7AD00A84030 /* dimensions-iphone6.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01EB1A97F7AD00A84030 /* dimensions-iphone6.plist */; };
 		49FF01F21A97F7AD00A84030 /* dimensions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01EC1A97F7AD00A84030 /* dimensions.plist */; };
 		49FF02111A98108300A84030 /* MDSmallestWidthRuleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49FF02101A98108300A84030 /* MDSmallestWidthRuleTest.m */; };
-		49FF022B1A98CE7400A84030 /* dimensions-iphone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF022A1A98CE7400A84030 /* dimensions-iphone.plist */; };
+		49FF022B1A98CE7400A84030 /* dimensions-iphone6-land.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF022A1A98CE7400A84030 /* dimensions-iphone6-land.plist */; };
+		49FF023B1A98F16F00A84030 /* dimensions-iphone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF023A1A98F16F00A84030 /* dimensions-iphone.plist */; };
+		49FF023D1A98F77A00A84030 /* dimensions-iphone5-port.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF023C1A98F77A00A84030 /* dimensions-iphone5-port.plist */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -43,10 +45,12 @@
 		35F74A257C3D40F8336ECAB2 /* libPods-MDResourceManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MDResourceManager.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4F603D98F611877C292BF6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		4789182C406CC2B57F860B6B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		49FF01EB1A97F7AD00A84030 /* dimensions-ipad.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-ipad.plist"; sourceTree = "<group>"; };
+		49FF01EB1A97F7AD00A84030 /* dimensions-iphone6.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone6.plist"; sourceTree = "<group>"; };
 		49FF01EC1A97F7AD00A84030 /* dimensions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dimensions.plist; sourceTree = "<group>"; };
 		49FF02101A98108300A84030 /* MDSmallestWidthRuleTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSmallestWidthRuleTest.m; sourceTree = "<group>"; };
-		49FF022A1A98CE7400A84030 /* dimensions-iphone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone.plist"; sourceTree = "<group>"; };
+		49FF022A1A98CE7400A84030 /* dimensions-iphone6-land.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone6-land.plist"; sourceTree = "<group>"; };
+		49FF023A1A98F16F00A84030 /* dimensions-iphone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone.plist"; sourceTree = "<group>"; };
+		49FF023C1A98F77A00A84030 /* dimensions-iphone5-port.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone5-port.plist"; sourceTree = "<group>"; };
 		4B372EC0F064E878A01F9C23 /* MDResourceManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MDResourceManager.podspec; path = ../MDResourceManager.podspec; sourceTree = "<group>"; };
 		4F5BF55C55763712949EA3A4 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* MDResourceManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDResourceManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,8 +109,10 @@
 			isa = PBXGroup;
 			children = (
 				49FF01EC1A97F7AD00A84030 /* dimensions.plist */,
-				49FF022A1A98CE7400A84030 /* dimensions-iphone.plist */,
-				49FF01EB1A97F7AD00A84030 /* dimensions-ipad.plist */,
+				49FF022A1A98CE7400A84030 /* dimensions-iphone6-land.plist */,
+				49FF023C1A98F77A00A84030 /* dimensions-iphone5-port.plist */,
+				49FF01EB1A97F7AD00A84030 /* dimensions-iphone6.plist */,
+				49FF023A1A98F16F00A84030 /* dimensions-iphone.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -293,12 +299,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49FF022B1A98CE7400A84030 /* dimensions-iphone.plist in Resources */,
+				49FF022B1A98CE7400A84030 /* dimensions-iphone6-land.plist in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F5A1195388D20070C39A /* Main.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				49FF01F21A97F7AD00A84030 /* dimensions.plist in Resources */,
-				49FF01F11A97F7AD00A84030 /* dimensions-ipad.plist in Resources */,
+				49FF01F11A97F7AD00A84030 /* dimensions-iphone6.plist in Resources */,
+				49FF023B1A98F16F00A84030 /* dimensions-iphone.plist in Resources */,
+				49FF023D1A98F77A00A84030 /* dimensions-iphone5-port.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

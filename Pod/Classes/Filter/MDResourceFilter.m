@@ -84,12 +84,12 @@
     __block MDAbstractRule *matchingRule = nil;
     __block NSMutableIndexSet *notMatchingIndexes = [[NSMutableIndexSet alloc] init];
     
-    [resources enumerateObjectsUsingBlock:^(MDResource *resource, NSUInteger idx, BOOL *stop) {
+    [resources enumerateObjectsUsingBlock:^(MDResource *resource, NSUInteger resourceIndex, BOOL *stop) {
         
         __block MDAbstractRule *foundRule = nil;
         if (resource.values[key]) {
             
-            [resource.rules enumerateObjectsUsingBlock:^(MDAbstractRule *rule, NSUInteger idx, BOOL *stop) {
+            [resource.rules enumerateObjectsUsingBlock:^(MDAbstractRule *rule, NSUInteger ruleIndex, BOOL *stop) {
                 
                 if ([rule isKindOfClass:ruleClass]) {
                     
@@ -119,11 +119,11 @@
                 matchingResource = resource;
             } else {
                 
-                [notMatchingIndexes addIndex:idx];
+                [notMatchingIndexes addIndex:resourceIndex];
             }
         } else {
             
-            [notMatchingIndexes addIndex:idx];
+            [notMatchingIndexes addIndex:resourceIndex];
         }
         
     }];

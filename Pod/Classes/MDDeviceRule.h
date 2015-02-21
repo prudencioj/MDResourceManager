@@ -13,5 +13,6 @@
 - (instancetype)initWithDevice:(NSString *)device;
 
 @property (nonatomic, readonly) NSString *device;
+@property (nonatomic, readonly) NSString *model;
 
 @end
