@@ -7,46 +7,34 @@
 //
 
 #import "MDResourceManager.h"
-#import "MDSmallestWidthRule.h"
-#import "MDOrientationRule.h"
 #import "MDResourceFilter.h"
-#import "MDRuleFactory.h"
 #import "MDResource.h"
-
-static NSString *const kDefaultFileName = @"dimensions";
+#import "MDResourceCriteriaProtocol.h"
+#import "MDResourceQualifier.h"
+#import "MDResourcePropertyListParser.h"
 
 @interface MDResourceManager ()
 
-@property (nonatomic, strong) NSString *fileName;
+@property (nonatomic, strong, readonly) NSString *prefixFileName;
+@property (nonatomic, strong, readonly) NSArray *criterias;
+
 @property (nonatomic, strong) NSArray *resources;
+
+@property (nonatomic, strong) MDResourceFilter *resourceFilter;
 
 @end
 
 @implementation MDResourceManager
 
-- (instancetype)init {
+- (instancetype)initWithPrefixFileName:(NSString *)fileName criterias:(NSArray *)criterias {
     
     self = [super init];
     
     if (self) {
         
-        _fileName = kDefaultFileName;
-        
-        [self commonInit];
-    }
-    
-    return self;
-}
-
-- (instancetype)initWithFileName:(NSString *)fileName {
-
-    self = [super init];
-    
-    if (self) {
-        
-        _fileName = fileName;
-        
-        [self commonInit];
+        _prefixFileName = fileName;
+        _criterias = criterias;
+        _resourceFilter = [[MDResourceFilter alloc] initWithCriterias:criterias];
     }
     
     return self;
@@ -56,75 +44,38 @@ static NSString *const kDefaultFileName = @"dimensions";
 
 - (void)loadResources {
     
-    self.resources = [self loadConfigurationsForFileName:self.fileName].copy;
-}
-
-- (CGFloat)floatForKey:(NSString *)key {
-    
-    MDResource *resource = [MDResourceFilter filterResources:self.resources forKey:key];
-    NSNumber *dimension = resource.values[key];
-    return dimension.floatValue;
+    self.resources = [MDResourcePropertyListParser resourcesWithPrefixFileName:self.prefixFileName
+                                                                     criterias:self.criterias];
 }
 
 - (id)valueForKey:(NSString *)key {
     
-    MDResource *resource = [MDResourceFilter filterResources:self.resources forKey:key];
+    MDResource *resource = [self.resourceFilter filterResources:self.resources
+                                                         forKey:key];
     return resource.values[key];
 }
 
-#pragma mark - Private 
+// TODO type validations
 
-- (void)commonInit {
+- (NSString *)stringForKey:(NSString *)key {
     
-    self.resources = [self loadConfigurationsForFileName:self.fileName];
+    id value = [self valueForKey:key];
+    NSString *stringValue = value;
+    return stringValue;
 }
 
-- (NSArray *)loadConfigurationsForFileName:(NSString *)fileName {
+- (NSNumber *)numberForKey:(NSString *)key {
     
-    NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *dirContents = [fileManager contentsOfDirectoryAtPath:bundleRoot error:nil];
-    NSPredicate *extensionPredicate = [NSPredicate predicateWithFormat:@"self ENDSWITH '.plist'"];
-    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"SELF like[c] %@",
-                                  [NSString stringWithFormat:@"%@*",fileName]];
+    id value = [self valueForKey:key];
+    NSNumber *dimension = value;
+    return dimension;
+}
+
+- (CGFloat)floatForKey:(NSString *)key {
     
-    NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType
-                                                                 subpredicates:@[extensionPredicate,namePredicate]];
-    NSArray *resourceFileNames = [dirContents filteredArrayUsingPredicate:predicate];
-    
-    NSMutableArray *resources = @[].mutableCopy;
-    
-    [resourceFileNames enumerateObjectsUsingBlock:^(NSString *file, NSUInteger idx, BOOL *stop) {
-        
-        NSString* fileName = [[file lastPathComponent] stringByDeletingPathExtension];
-        NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@".plist"];
-        NSDictionary *values = [NSDictionary dictionaryWithContentsOfFile:path];
-        
-        NSMutableArray *rules = @[].mutableCopy;
-        NSMutableArray *qualifiersArray = [fileName componentsSeparatedByString:@"-"].mutableCopy;
-        
-        if (qualifiersArray.count > 1) {
-            
-            [qualifiersArray removeObjectAtIndex:0];
-            
-            [qualifiersArray enumerateObjectsUsingBlock:^(NSString *qualifier, NSUInteger idx, BOOL *stop) {
-                
-                MDAbstractRule *rule = [MDRuleFactory makeRuleWithQualifier:qualifier];
-                
-                if (rule) {
-                    
-                    [rules addObject:rule];
-                }
-            }];
-        }
-        
-        MDResource *resource = [[MDResource alloc] initWithValues:values rules:rules.copy];
-        
-        [resources addObject:resource];
-        
-    }];
-    
-    return resources.copy;
+    id value = [self valueForKey:key];
+    NSNumber *dimension = value;
+    return dimension.floatValue;
 }
 
 @end

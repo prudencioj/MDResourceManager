@@ -7,6 +7,8 @@
 //
 
 #import "MDAppDelegate.h"
+#import "MDDeviceResourceCriteria.h"
+#import "MDOrientationResourceCriteria.h"
 
 @implementation MDAppDelegate
 
@@ -20,7 +22,13 @@ static MDAppDelegate * _sharedInstance = nil;
     
     _sharedInstance = self;
 
-    self.resourceManager = [[MDResourceManager alloc] initWithFileName:@"dimensions"];
+    NSArray *criterias = @[[[MDDeviceResourceCriteria alloc] init],
+                            [[MDOrientationResourceCriteria alloc] init]];
+    
+    self.resourceManager = [[MDResourceManager alloc] initWithPrefixFileName:@"dimensions"
+                                                                   criterias:criterias];
+    
+    [self.resourceManager loadResources];
     
     return YES;
 }

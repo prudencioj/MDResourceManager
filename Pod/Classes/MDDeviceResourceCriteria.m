@@ -1,70 +1,58 @@
 //
-//  MDDeviceRule.m
+//  MDDeviceResourceCriteria.m
 //  Pods
 //
 //  Created by Joao Prudencio on 21/02/15.
 //
 //
 
-#import "MDDeviceRule.h"
+#import "MDDeviceResourceCriteria.h"
+#import <UIKit/UIKit.h>
 #import <sys/utsname.h>
 
 static NSString *const kQualifierPrefixIphone = @"iphone";
 static NSString *const kQualifierPrefixIpad = @"ipad";
 
-@implementation MDDeviceRule
+@implementation MDDeviceResourceCriteria
 
-- (instancetype)initWithDevice:(NSString *)device {
-    
-    self = [super init];
-    
-    if (self) {
-        
-        _device = device;
-        _model = [self modelFromDevice:device];
-    }
-    
-    return self;
-}
+#pragma mark - MDResourceCriteriaProtocol
 
-- (BOOL)doesRuleMatch {
+- (BOOL)meetCriteriaWith:(NSString *)qualifier {
     
-    BOOL isPad = [self.device isEqualToString:kQualifierPrefixIpad];
+    BOOL isPad = [qualifier isEqualToString:kQualifierPrefixIpad];
     BOOL isEqualDevice = isPad == self.isDevicePad;
-
     
-    BOOL isEqualModel = self.model && self.model.length > 0? [[self currentModel] containsString:self.model]: YES;
+    NSString *model = [self modelFromDevice:qualifier];
+    
+    BOOL isEqualModel = model && model.length > 0? [[self currentModel] containsString:model]: YES;
     
     return isEqualDevice && isEqualModel;
 }
 
-- (NSComparisonResult)compare:(MDAbstractRule *)rule {
+- (BOOL)respondsToQualifier:(NSString *)qualifier {
     
-    if ([rule isKindOfClass:[MDDeviceRule class]]) {
-        
-        MDDeviceRule *deviceRule = (MDDeviceRule *)rule;
-        
-        BOOL hasModel1 = self.model && self.model.length > 0;
-        BOOL hasModel2 = deviceRule.model && deviceRule.model.length > 0;
-
-        if (hasModel1 && !hasModel2) {
-            
-            return NSOrderedAscending;
-        } else if (hasModel1 && hasModel2 && self.model.length > deviceRule.model.length) {
-            
-            return NSOrderedAscending;
-        } else {
-         
-            return NSOrderedDescending;
-        }
-    }
-    
-    return NSOrderedDescending;
+    return [qualifier hasPrefix:kQualifierPrefixIphone] ||
+           [qualifier hasPrefix:kQualifierPrefixIpad];
 }
 
-- (NSString *)description {
+- (BOOL)shouldOverrideQualifier:(NSString *)qualifier1 withQualifier:(NSString *)qualifier2 {
     
-    return [NSString stringWithFormat:@"%@",self.device];
+    NSString *model1 = [self modelFromDevice:qualifier1];
+    NSString *model2 = [self modelFromDevice:qualifier2];
+
+    BOOL hasModel1 = model1 && model1.length > 0;
+    BOOL hasModel2 = model2 && model2.length > 0;
+    
+    if (!hasModel1 && hasModel2) {
+        
+        return YES;
+    } else if (hasModel1 && hasModel2 && model1.length > model1.length) {
+        
+        return YES;
+    } else {
+        
+        return NO;
+    }
 }
 
 #pragma mark - Helper
@@ -154,7 +142,7 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
                               @"iPad4,9" :@"ipadmini3",
                               @"iPad5,3" :@"ipadair2",
                               @"iPad5,4" :@"ipadair2",
-                        
+                              
                               };
     });
     

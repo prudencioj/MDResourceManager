@@ -11,6 +11,8 @@
 
 @interface MDResourceFilter : NSObject
 
-+ (MDResource *)filterResources:(NSArray *)resources forKey:(NSString *)key;
+- (instancetype)initWithCriterias:(NSArray *)criterias;
+
+- (MDResource *)filterResources:(NSArray *)resources forKey:(NSString *)key;
 
 @end

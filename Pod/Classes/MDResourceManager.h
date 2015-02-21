@@ -11,9 +11,13 @@
 
 @interface MDResourceManager : NSObject
 
-- (instancetype)initWithFileName:(NSString *)fileName;
+- (instancetype)initWithPrefixFileName:(NSString *)fileName criterias:(NSArray *)criterias;
 
-- (CGFloat)floatForKey:(NSString *)key;
+- (void)loadResources;
+
 - (id)valueForKey:(NSString *)key;
+- (NSString *)stringForKey:(NSString *)key;
+- (NSNumber *)numberForKey:(NSString *)key;
+- (CGFloat)floatForKey:(NSString *)key;
 
 @end
