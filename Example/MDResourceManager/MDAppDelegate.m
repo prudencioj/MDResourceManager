@@ -20,7 +20,7 @@ static MDAppDelegate * _sharedInstance = nil;
     
     _sharedInstance = self;
 
-    self.resourceManager = [[MDResourceManager alloc] init];
+    self.resourceManager = [[MDResourceManager alloc] initWithFileName:@"dimensions"];
     
     return YES;
 }

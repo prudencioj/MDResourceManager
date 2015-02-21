@@ -32,7 +32,8 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
     BOOL isPad = [self.device isEqualToString:kQualifierPrefixIpad];
     BOOL isEqualDevice = isPad == self.isDevicePad;
 
-    BOOL isEqualModel = self.model && self.model.length > 0? [self.model isEqualToString:[self currentModel]]: YES;
+    
+    BOOL isEqualModel = self.model && self.model.length > 0? [[self currentModel] containsString:self.model]: YES;
     
     return isEqualDevice && isEqualModel;
 }
@@ -124,8 +125,8 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
                               @"iPhone6,2" :@"iphone5s",
                               @"iPhone7,2" :@"iphone6",
                               @"iPhone7,1" :@"iphone6plus",
-                              @"i386"      :@"iphone6",
-                              @"x86_64"    :@"iphone6",
+                              @"i386"      :@"iphone6plus",
+                              @"x86_64"    :@"iphone6plus",
                               
                               //iPads
                               @"iPad1,1" :@"ipad1",
