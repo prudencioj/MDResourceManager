@@ -49,6 +49,9 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
         if (hasModel1 && !hasModel2) {
             
             return NSOrderedAscending;
+        } else if (hasModel1 && hasModel2 && self.model.length > deviceRule.model.length) {
+            
+            return NSOrderedAscending;
         } else {
          
             return NSOrderedDescending;
@@ -121,8 +124,8 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
                               @"iPhone6,2" :@"iphone5s",
                               @"iPhone7,2" :@"iphone6",
                               @"iPhone7,1" :@"iphone6plus",
-                              @"i386"      :@"iphone",
-                              @"x86_64"    :@"iphone",
+                              @"i386"      :@"iphone6",
+                              @"x86_64"    :@"iphone6",
                               
                               //iPads
                               @"iPad1,1" :@"ipad1",
