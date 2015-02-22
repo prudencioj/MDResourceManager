@@ -18,17 +18,21 @@ PODS:
   - MDResourceManager/Parser (0.1.0):
     - MDResourceManager/Criteria
     - MDResourceManager/Resource
-  - MDResourceManager/Resource (0.1.0)
+  - MDResourceManager/Resource (0.1.0):
+    - MDResourceManager/Criteria
   - MDResourceManager/Util (0.1.0)
+  - OCMock (3.1.2)
 
 DEPENDENCIES:
   - MDResourceManager (from `../`)
+  - OCMock
 
 EXTERNAL SOURCES:
   MDResourceManager:
     :path: ../
 
 SPEC CHECKSUMS:
-  MDResourceManager: 5873e338470d4834bb41769248ad3280333d56a2
+  MDResourceManager: cfb176e9f59196bec38579d6fded8b8eabf7c116
+  OCMock: ecdd510b73ef397f2f97274785c1e87fd147c49f
 
 COCOAPODS: 0.35.0

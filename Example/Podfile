@@ -6,5 +6,5 @@ end
 
 target 'Tests', :exclusive => true do
   pod "MDResourceManager", :path => "../"
-
+  pod 'OCMock' 
 end

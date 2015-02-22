@@ -10,6 +10,10 @@
 		4566C37ACD3D2A6F588BAA8D /* libPods-MDResourceManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F74A257C3D40F8336ECAB2 /* libPods-MDResourceManager.a */; };
 		49E9AFDA1A99EFD30019CFF5 /* dimensions-iphone4.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49E9AFD91A99EFD30019CFF5 /* dimensions-iphone4.plist */; };
 		49E9AFDC1A99EFE30019CFF5 /* dimensions-iphone4s.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49E9AFDB1A99EFE30019CFF5 /* dimensions-iphone4s.plist */; };
+		49E9AFDE1A9A05300019CFF5 /* MDDeviceResourceCriteriaTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E9AFDD1A9A05300019CFF5 /* MDDeviceResourceCriteriaTest.m */; };
+		49E9AFE01A9A0A2A0019CFF5 /* MDDeviceOrientationResourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E9AFDF1A9A0A2A0019CFF5 /* MDDeviceOrientationResourceTest.m */; };
+		49E9AFE21A9A0BE50019CFF5 /* MDResourceFilterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E9AFE11A9A0BE50019CFF5 /* MDResourceFilterTest.m */; };
+		49E9AFE61A9A0C6B0019CFF5 /* MDTestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E9AFE51A9A0C6B0019CFF5 /* MDTestUtil.m */; };
 		49FF01F21A97F7AD00A84030 /* dimensions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01EC1A97F7AD00A84030 /* dimensions.plist */; };
 		49FF022B1A98CE7400A84030 /* dimensions-iphone6-land.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF022A1A98CE7400A84030 /* dimensions-iphone6-land.plist */; };
 		49FF023B1A98F16F00A84030 /* dimensions-iphone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF023A1A98F16F00A84030 /* dimensions-iphone.plist */; };
@@ -29,7 +33,7 @@
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
-		6003F5BC195388D20070C39A /* ResourceManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* ResourceManagerTests.m */; };
+		6003F5BC195388D20070C39A /* MDResourceManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* MDResourceManagerTest.m */; };
 		61BC836821709C2DCC01FD5A /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 767ED8CDCAA8D2602F0F306C /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +53,11 @@
 		4789182C406CC2B57F860B6B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		49E9AFD91A99EFD30019CFF5 /* dimensions-iphone4.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone4.plist"; sourceTree = "<group>"; };
 		49E9AFDB1A99EFE30019CFF5 /* dimensions-iphone4s.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone4s.plist"; sourceTree = "<group>"; };
+		49E9AFDD1A9A05300019CFF5 /* MDDeviceResourceCriteriaTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDeviceResourceCriteriaTest.m; sourceTree = "<group>"; };
+		49E9AFDF1A9A0A2A0019CFF5 /* MDDeviceOrientationResourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDeviceOrientationResourceTest.m; sourceTree = "<group>"; };
+		49E9AFE11A9A0BE50019CFF5 /* MDResourceFilterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDResourceFilterTest.m; sourceTree = "<group>"; };
+		49E9AFE41A9A0C6B0019CFF5 /* MDTestUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTestUtil.h; sourceTree = "<group>"; };
+		49E9AFE51A9A0C6B0019CFF5 /* MDTestUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTestUtil.m; sourceTree = "<group>"; };
 		49FF01EC1A97F7AD00A84030 /* dimensions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dimensions.plist; sourceTree = "<group>"; };
 		49FF022A1A98CE7400A84030 /* dimensions-iphone6-land.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone6-land.plist"; sourceTree = "<group>"; };
 		49FF023A1A98F16F00A84030 /* dimensions-iphone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone.plist"; sourceTree = "<group>"; };
@@ -74,7 +83,7 @@
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6003F5BB195388D20070C39A /* ResourceManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResourceManagerTests.m; sourceTree = "<group>"; };
+		6003F5BB195388D20070C39A /* MDResourceManagerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDResourceManagerTest.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		64F329390355ADC525AE29A9 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		767ED8CDCAA8D2602F0F306C /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49E9AFE31A9A0C5C0019CFF5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				49E9AFE41A9A0C6B0019CFF5 /* MDTestUtil.h */,
+				49E9AFE51A9A0C6B0019CFF5 /* MDTestUtil.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		49FF01E61A97F78800A84030 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,8 +210,12 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				49E9AFE31A9A0C5C0019CFF5 /* Utils */,
 				49FF02571A99675700A84030 /* TestResources */,
-				6003F5BB195388D20070C39A /* ResourceManagerTests.m */,
+				6003F5BB195388D20070C39A /* MDResourceManagerTest.m */,
+				49E9AFE11A9A0BE50019CFF5 /* MDResourceFilterTest.m */,
+				49E9AFDD1A9A05300019CFF5 /* MDDeviceResourceCriteriaTest.m */,
+				49E9AFDF1A9A0A2A0019CFF5 /* MDDeviceOrientationResourceTest.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
@@ -413,7 +435,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6003F5BC195388D20070C39A /* ResourceManagerTests.m in Sources */,
+				49E9AFE21A9A0BE50019CFF5 /* MDResourceFilterTest.m in Sources */,
+				6003F5BC195388D20070C39A /* MDResourceManagerTest.m in Sources */,
+				49E9AFE61A9A0C6B0019CFF5 /* MDTestUtil.m in Sources */,
+				49E9AFE01A9A0A2A0019CFF5 /* MDDeviceOrientationResourceTest.m in Sources */,
+				49E9AFDE1A9A05300019CFF5 /* MDDeviceResourceCriteriaTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

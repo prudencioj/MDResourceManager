@@ -11,14 +11,15 @@
 #import "MDResourceManager.h"
 #import "MDDeviceResourceCriteria.h"
 #import "MDOrientationResourceCriteria.h"
+#import "OCMock.h"
 
-@interface resourcesTests : XCTestCase
+@interface MDResourceManagerTest : XCTestCase
 
 @property (nonatomic, strong) MDResourceManager *resourceManager;
 
 @end
 
-@implementation resourcesTests
+@implementation MDResourceManagerTest
 
 - (void)setUp {
     
