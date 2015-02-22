@@ -35,16 +35,16 @@
     NSArray *criterias = @[[[MDDeviceResourceCriteria alloc] init],
                            [[MDOrientationResourceCriteria alloc] init]];
     
-    self.resourceManager = [[MDResourceManager alloc] initWithPrefixFileName:@"dimensions"
+    self.resourceManager = [[MDResourceManager alloc] initWithPrefixFileName:@"testresource"
                                                                                          criterias:criterias];
     
     [self.resourceManager loadResources];
     
-    CGFloat dimension = [self.resourceManager floatForKey:@"labelFontSize"];
+    CGFloat dimension = [self.resourceManager floatForKey:@"size"];
 
     NSLog(@"%f",dimension);
     
-    XCTAssert(dimension == 45.0f, @"Pass");
+    XCTAssert(dimension == 10.0f, @"Pass");
 }
 
 

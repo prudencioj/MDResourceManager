@@ -12,6 +12,8 @@
 		49FF022B1A98CE7400A84030 /* dimensions-iphone6-land.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF022A1A98CE7400A84030 /* dimensions-iphone6-land.plist */; };
 		49FF023B1A98F16F00A84030 /* dimensions-iphone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF023A1A98F16F00A84030 /* dimensions-iphone.plist */; };
 		49FF023D1A98F77A00A84030 /* dimensions-iphone6.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF023C1A98F77A00A84030 /* dimensions-iphone6.plist */; };
+		49FF02591A99677000A84030 /* testresource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF02581A99677000A84030 /* testresource.plist */; };
+		49FF025C1A9969C100A84030 /* testresource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF02581A99677000A84030 /* testresource.plist */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -47,6 +49,7 @@
 		49FF022A1A98CE7400A84030 /* dimensions-iphone6-land.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone6-land.plist"; sourceTree = "<group>"; };
 		49FF023A1A98F16F00A84030 /* dimensions-iphone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone.plist"; sourceTree = "<group>"; };
 		49FF023C1A98F77A00A84030 /* dimensions-iphone6.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone6.plist"; sourceTree = "<group>"; };
+		49FF02581A99677000A84030 /* testresource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = testresource.plist; sourceTree = "<group>"; };
 		4B372EC0F064E878A01F9C23 /* MDResourceManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MDResourceManager.podspec; path = ../MDResourceManager.podspec; sourceTree = "<group>"; };
 		4F5BF55C55763712949EA3A4 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* MDResourceManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDResourceManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +115,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		49FF02571A99675700A84030 /* TestResources */ = {
+			isa = PBXGroup;
+			children = (
+				49FF02581A99677000A84030 /* testresource.plist */,
+			);
+			name = TestResources;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +186,7 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				49FF02571A99675700A84030 /* TestResources */,
 				6003F5BB195388D20070C39A /* ResourceManagerTests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
@@ -297,6 +309,7 @@
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F5A1195388D20070C39A /* Main.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				49FF025C1A9969C100A84030 /* testresource.plist in Resources */,
 				49FF01F21A97F7AD00A84030 /* dimensions.plist in Resources */,
 				49FF023B1A98F16F00A84030 /* dimensions-iphone.plist in Resources */,
 				49FF023D1A98F77A00A84030 /* dimensions-iphone6.plist in Resources */,
@@ -307,6 +320,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FF02591A99677000A84030 /* testresource.plist in Resources */,
 				6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
