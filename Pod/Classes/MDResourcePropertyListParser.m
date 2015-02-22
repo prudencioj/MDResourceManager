@@ -7,6 +7,8 @@
 //
 
 #import "MDResourcePropertyListParser.h"
+#import "MDResourceCriteriaProtocol.h"
+#import "MDResourceQualifier.h"
 #import "MDResource.h"
 
 @implementation MDResourcePropertyListParser
@@ -60,7 +62,7 @@
                 
                 if ([criteria respondsToQualifier:qualifier]) {
                     
-                    MDResourceQualifier *resourceQualifier = [[MDResourceQualifier alloc] initWithQualifier:qualifier criteria:criteria];
+                    MDResourceQualifier *resourceQualifier = [[MDResourceQualifier alloc] initWithQualifier:qualifier criteriaClass:[criteria class]];
                     [resourceQualifiers addObject:resourceQualifier];
                     
                     *stop = YES;

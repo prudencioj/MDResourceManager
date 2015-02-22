@@ -12,11 +12,8 @@
 @interface MDResourceQualifier : NSObject
 
 @property (nonatomic, strong, readonly) NSString *qualifier;
-@property (nonatomic, strong, readonly) id<MDResourceCriteriaProtocol> criteria;
+@property (nonatomic, strong) Class criteriaClass;
 
-- (instancetype)initWithQualifier:(NSString *)qualifier criteria:(id<MDResourceCriteriaProtocol>)criteria;
-
-- (BOOL)meetCriteria;
-- (NSComparisonResult)compare:(MDResourceQualifier *)resourceQualifier;
+- (instancetype)initWithQualifier:(NSString *)qualifier criteriaClass:(Class)criteriaClass;
 
 @end

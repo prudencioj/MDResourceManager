@@ -11,7 +11,10 @@
 
 @interface MDResourceManager : NSObject
 
-- (instancetype)initWithPrefixFileName:(NSString *)fileName criterias:(NSArray *)criterias;
+- (instancetype)initWithPrefixFileName:(NSString *)fileName
+                             criterias:(NSArray *)criterias;
+
+- (instancetype)initWithPrefixFileName:(NSString *)fileName;
 
 - (void)loadResources;
 

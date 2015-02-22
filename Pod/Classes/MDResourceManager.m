@@ -7,11 +7,10 @@
 //
 
 #import "MDResourceManager.h"
-#import "MDResourceFilter.h"
-#import "MDResource.h"
-#import "MDResourceCriteriaProtocol.h"
-#import "MDResourceQualifier.h"
 #import "MDResourcePropertyListParser.h"
+#import "MDOrientationResourceCriteria.h"
+#import "MDDeviceResourceCriteria.h"
+#import "MDResourceFilter.h"
 
 @interface MDResourceManager ()
 
@@ -35,6 +34,21 @@
         _prefixFileName = fileName;
         _criterias = criterias;
         _resourceFilter = [[MDResourceFilter alloc] initWithCriterias:criterias];
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithPrefixFileName:(NSString *)fileName {
+    
+    self = [super init];
+    
+    if (self) {
+        
+        _prefixFileName = fileName;
+        _criterias = @[[[MDDeviceResourceCriteria alloc] init],
+                       [[MDOrientationResourceCriteria alloc] init]];
+        _resourceFilter = [[MDResourceFilter alloc] initWithCriterias:_criterias];
     }
     
     return self;

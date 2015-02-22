@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "MDResourceManager.h"
+#import "MDDeviceResourceCriteria.h"
+#import "MDOrientationResourceCriteria.h"
 
 @interface resourcesTests : XCTestCase
+
+@property (nonatomic, strong) MDResourceManager *resourceManager;
 
 @end
 
@@ -28,17 +32,19 @@
 
 - (void)testExample {
     
-    MDResourceManager *resourceManager = [[MDResourceManager alloc] initWithFileName:@"dimensions"];
+    NSArray *criterias = @[[[MDDeviceResourceCriteria alloc] init],
+                           [[MDOrientationResourceCriteria alloc] init]];
     
-    __block CGFloat dimension;
+    self.resourceManager = [[MDResourceManager alloc] initWithPrefixFileName:@"dimensions"
+                                                                                         criterias:criterias];
     
-    [self measureBlock:^{
-        
-        dimension = [resourceManager floatForKey:@"dimension1"];
-    }];
+    [self.resourceManager loadResources];
     
+    CGFloat dimension = [self.resourceManager floatForKey:@"labelFontSize"];
+
+    NSLog(@"%f",dimension);
     
-    XCTAssert(dimension == 9.0f, @"Pass");
+    XCTAssert(dimension == 45.0f, @"Pass");
 }
 
 - (void)testPerformanceExample {

@@ -13,6 +13,7 @@
 @interface MDResourceFilter ()
 
 @property (nonatomic, strong, readonly) NSArray *criterias;
+@property (nonatomic, strong, readonly) NSDictionary *criteriaByClass;
 
 @end
 
@@ -25,6 +26,7 @@
     if (self) {
         
         _criterias = criterias;
+        _criteriaByClass = [self criteriaByClassFromCriterias:criterias];
     }
     return self;
 }
@@ -53,7 +55,31 @@
     
     [resources enumerateObjectsUsingBlock:^(MDResource *resource, NSUInteger idx, BOOL *stop) {
         
-        if ([resource meetAllCriteriasForKey:key]) {
+        __block BOOL meetsAllCriterias = YES;
+        
+        if (resource.values[key]) {
+            
+            // if exists now check for its resource qualifiers
+            // all qualifiers must meet its criteria
+            
+            [resource.resourceQualifiers enumerateObjectsUsingBlock:^(MDResourceQualifier *resourceQualifier, NSUInteger idx, BOOL *stop) {
+                
+                id<MDResourceCriteriaProtocol> criteria = self.criteriaByClass[resourceQualifier.criteriaClass.description];
+                
+                if (![criteria meetCriteriaWith:resourceQualifier.qualifier]) {
+                    
+                    meetsAllCriterias = NO;
+                    *stop = YES;
+                }
+            }];
+            
+        } else {
+            
+            meetsAllCriterias = NO;
+        }
+
+        
+        if (meetsAllCriterias) {
             
             [filteredResources addObject:resource];
         }
@@ -75,7 +101,7 @@
         return resources;
     }
     
-    // 2. Pick the (next) highest-precedence qualifier in the list priorityRules.
+    // 2. Pick the (next) highest-precedence criteria in the list resourceCriterias.
     
     __block id<MDResourceCriteriaProtocol> resourceCriteria = resourceCriterias.firstObject;
     
@@ -91,10 +117,17 @@
         
         if (resource.values[key]) {
             
-            foundResourceQualifier = [resource resourceQualifierForCriteria:resourceCriteria];
+            for (MDResourceQualifier *resourceQualifier in resource.resourceQualifiers) {
+                
+                if ([resourceCriteria isKindOfClass:resourceQualifier.criteriaClass]) {
+                    
+                    foundResourceQualifier = resourceQualifier;
+                    break;
+                }
+            }
         }
         
-        if ([foundResourceQualifier meetCriteria]) {
+        if ([resourceCriteria meetCriteriaWith:foundResourceQualifier.qualifier]) {
             
             // There are cases where multiples resources exist with the same rule.
             // e.g. dimensions-sw200 and dimensions-sw300 in an iPhone6 device.
@@ -103,7 +136,8 @@
             // In this case we would choose dimensions-sw300
             
             if (!matchingResourceQualifier ||
-                [foundResourceQualifier compare:matchingResourceQualifier] == NSOrderedAscending) {
+                [resourceCriteria shouldOverrideQualifier:matchingResourceQualifier.qualifier
+                                            withQualifier:foundResourceQualifier.qualifier]) {
             
                 if (matchingResourceQualifier) {
                     
@@ -154,6 +188,20 @@
     return [self bestMatchInResource:resources
                withResourceCriterias:resourceCriterias
                               forKey:key];
+}
+
+#pragma mark - Helper
+
+- (NSDictionary *)criteriaByClassFromCriterias:(NSArray *)criterias {
+    
+    NSMutableDictionary *criteriaByClass = @{}.mutableCopy;
+    
+    [criterias enumerateObjectsUsingBlock:^(id<MDResourceCriteriaProtocol> criteria, NSUInteger idx, BOOL *stop) {
+        
+        criteriaByClass[criteria.class.description] = criteria;
+    }];
+    
+    return criteriaByClass.copy;
 }
 
 @end

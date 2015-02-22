@@ -10,33 +10,22 @@
 
 @implementation MDResourceQualifier
 
-- (instancetype)initWithQualifier:(NSString *)qualifier criteria:(id<MDResourceCriteriaProtocol>)criteria {
+- (instancetype)initWithQualifier:(NSString *)qualifier criteriaClass:(Class)criteriaClass {
     
     self = [super init];
     
     if (self) {
         
         _qualifier = qualifier;
-        _criteria = criteria;
+        _criteriaClass = criteriaClass;
     }
     
     return self;
 }
 
-- (BOOL)meetCriteria {
-
-    return [self.criteria meetCriteriaWith:self.qualifier];
-}
-
-- (NSComparisonResult)compare:(MDResourceQualifier *)resourceQualifier {
+- (NSString *)description {
     
-    if ([self.criteria shouldOverrideQualifier:resourceQualifier.qualifier withQualifier:self.qualifier]) {
-        
-        return NSOrderedAscending;
-    } else {
-        
-        return NSOrderedDescending;
-    }
+    return [NSString stringWithFormat:@"Criteria %@ with qualifier %@ ",self.criteriaClass,self.qualifier];
 }
 
 @end
