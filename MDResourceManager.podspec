@@ -18,19 +18,40 @@ Pod::Spec.new do |s|
                        * Don't worry about the indent, we strip it!
                        DESC
   s.homepage         = "https://github.com/<GITHUB_USERNAME>/MDResourceManager"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Joao Prudencio" => "joao.prudencio@mindera.com" }
   s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/MDResourceManager.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'MDResourceManager' => ['Pod/Assets/*.png']
-  }
+  s.subspec 'Manager' do |ss|
+    ss.source_files = 'Pod/Classes/Manager'
+  end
 
-  s.public_header_files = 'Pod/Classes/**/*.h'
+  s.subspec 'Filter' do |ss|
+    ss.source_files = 'Pod/Classes/Filter'
+    ss.dependency 'MDResourceManager/Criteria'
+    ss.dependency 'MDResourceManager/Resource'
+  end
+
+  s.subspec 'Criteria' do |ss|
+    ss.source_files = 'Pod/Classes/Criteria'
+    ss.dependency 'MDResourceManager/Util'
+  end
+
+  s.subspec 'Resource' do |ss|
+    ss.source_files = 'Pod/Classes/Resource'
+  end
+
+  s.subspec 'Parser' do |ss|
+    ss.source_files = 'Pod/Classes/Parser'
+    ss.dependency 'MDResourceManager/Criteria'
+    ss.dependency 'MDResourceManager/Resource'
+  end
+
+  s.subspec 'Util' do |ss|
+    ss.source_files = 'Pod/Classes/Util'
+  end
+
 end

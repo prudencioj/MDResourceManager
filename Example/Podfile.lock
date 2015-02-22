@@ -1,5 +1,22 @@
 PODS:
-  - MDResourceManager (0.1.0)
+  - MDResourceManager (0.1.0):
+    - MDResourceManager/Criteria (= 0.1.0)
+    - MDResourceManager/Filter (= 0.1.0)
+    - MDResourceManager/Manager (= 0.1.0)
+    - MDResourceManager/Parser (= 0.1.0)
+    - MDResourceManager/Resource (= 0.1.0)
+    - MDResourceManager/Util (= 0.1.0)
+  - MDResourceManager/Criteria (0.1.0):
+    - MDResourceManager/Util
+  - MDResourceManager/Filter (0.1.0):
+    - MDResourceManager/Criteria
+    - MDResourceManager/Resource
+  - MDResourceManager/Manager (0.1.0)
+  - MDResourceManager/Parser (0.1.0):
+    - MDResourceManager/Criteria
+    - MDResourceManager/Resource
+  - MDResourceManager/Resource (0.1.0)
+  - MDResourceManager/Util (0.1.0)
 
 DEPENDENCIES:
   - MDResourceManager (from `../`)
@@ -9,6 +26,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MDResourceManager: f587d973401ddfb186a4fc200ba01316ab6b895c
+  MDResourceManager: 2500b25b02604dead0f57b9f1e62d8c9dd52430c
 
 COCOAPODS: 0.35.0
