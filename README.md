@@ -17,9 +17,7 @@ Easily extended, you can provide your own criterias. e.g. handle different value
 
 The first step is to create your resource files with .plist extension. 
 
-<p align="center" >
-  <img src="http://s23.postimg.org/gj1n2xfbe/Screen_Shot_2015_02_22_at_13_45_42.jpg" alt="AFNetworking" title="Resource files with .plist extension">
-</p>
+![alt tag](http://s23.postimg.org/gj1n2xfbe/Screen_Shot_2015_02_22_at_13_45_42.jpg)
 
 ### Create ResourceManager
 
