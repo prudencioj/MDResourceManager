@@ -8,10 +8,10 @@ Pod::Spec.new do |s|
                        * Inspired in the Resource management of Android.
                        * Easily extended, you can provide your own criterias. e.g. handle different values depending on your product jurisdictions.
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/MDResourceManager"
+  s.homepage         = "https://github.com/prudencioj/MDResourceManager"
   s.license          = 'MIT'
   s.author           = { "Joao Prudencio" => "joao.prudencio@mindera.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/MDResourceManager.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/prudencioj/MDResourceManager.git", :tag => s.version.to_s }
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
