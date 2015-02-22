@@ -1,6 +1,6 @@
 # MDResourceManager
 
-[![Build Status](https://travis-ci.org/MDResourceManager/MDResourceManager.svg)](https://travis-ci.org/prudencioj/MDResourceManager)
+[![Build Status](https://travis-ci.org/prudencioj/MDResourceManager.svg?branch=master)](https://travis-ci.org/prudencioj/MDResourceManager)
 [![Version](https://img.shields.io/cocoapods/v/MDResourceManager.svg?style=flat)](http://cocoadocs.org/docsets/MDResourceManager)
 [![License](https://img.shields.io/cocoapods/l/MDResourceManager.svg?style=flat)](http://cocoadocs.org/docsets/MDResourceManager)
 [![Platform](https://img.shields.io/cocoapods/p/MDResourceManager.svg?style=flat)](http://cocoadocs.org/docsets/MDResourceManager)
