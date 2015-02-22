@@ -11,6 +11,17 @@ Provide resources independently of your code. Manage different sizes, strings de
 Inspired in the Resource management of Android.
 Easily extended, you can provide your own criterias. e.g. handle different values depending on your product jurisdictions.
 
+
+## How it works
+
+[0.10.x](http://developer.android.com/guide/topics/resources/providing-resources.html#BestMatch) 
+
+| Configuration | Qualifier values | Description  |
+| --------------------| :---------------------------:|----------------------------:|
+|  Device model |  Example: ipad iphone iphone6 iphon6plus    |                  | 
+|          |                    |                |                                                     
+
+
 ## Usage
 
 ### Create resource files
