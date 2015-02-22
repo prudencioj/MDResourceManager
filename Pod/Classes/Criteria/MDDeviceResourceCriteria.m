@@ -19,6 +19,13 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
 
 - (BOOL)meetCriteriaWith:(NSString *)qualifier {
     
+    // to meet the criteria the qualifier must represent the same device.
+    // if the qualifier has no specific model the criteria meets.
+    // e.g. device = iphone6plus qualifier = iphone -> YES
+    //      device = iphone6plus qualifier = iphone6 -> YES
+    //      device = iphone6plus qualifier = iphone6plus -> YES
+    //      device = iphone6plus qualifier = iphone5 -> NO
+
     BOOL isPad = [qualifier isEqualToString:kQualifierPrefixIpad];
     BOOL isEqualDevice = isPad == MDDeviceUtil.isDevicePad;
     
@@ -39,6 +46,9 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
 }
 
 - (BOOL)shouldOverrideQualifier:(NSString *)qualifier1 withQualifier:(NSString *)qualifier2 {
+    
+    // choose the qualifier more specific
+    // e.g. iphone6plus should override iphone6
     
     NSString *model1 = [self modelFromDevice:qualifier1];
     NSString *model2 = [self modelFromDevice:qualifier2];

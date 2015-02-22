@@ -34,8 +34,7 @@
     if ([code isEqualToString:@"i386"] || [code isEqualToString:@"x86_64"]) {
         
         NSString *simulatorDeviceType = [self simulatorDeviceType];
-        NSLog(@"Detecting your device version is not accurate in simulator. Guess: %@?",simulatorDeviceType);
-        
+        // Detecting your device version is not accurate in simulator.
         return simulatorDeviceType;
     } else {
         

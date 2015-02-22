@@ -14,6 +14,7 @@
 static NSString *const kFileExtension = @".plist";
 static NSString *const kExtensionPredicate = @"self ENDSWITH '.plist'";
 static NSString *const kNamePredicate = @"SELF like[c] %@";
+static NSString *const kQualifierSeparator = @"-";
 
 @implementation MDResourcePropertyListParser
 
@@ -54,7 +55,7 @@ static NSString *const kNamePredicate = @"SELF like[c] %@";
 + (NSArray *)resourceQualifiersFromString:(NSString *)resourceQualifiersString criterias:(NSArray *)criterias {
     
     NSMutableArray *resourceQualifiers = @[].mutableCopy;
-    NSMutableArray *qualifiersArray = [resourceQualifiersString componentsSeparatedByString:@"-"].mutableCopy;
+    NSMutableArray *qualifiersArray = [resourceQualifiersString componentsSeparatedByString:kQualifierSeparator].mutableCopy;
     
     if (qualifiersArray.count > 1) {
         
