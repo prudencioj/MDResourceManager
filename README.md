@@ -15,16 +15,18 @@ Easily extended, you can provide your own criterias. e.g. handle different value
 
 ## How it works
 
-It is inspired by the resource management in [Android](http://developer.android.com/guide/topics/resources/providing-resources.html#BestMatch) . It is a simple version, with less rules, and adapted to the iOS ecosystem. 
+It is inspired by the resource management in [Android](http://developer.android.com/guide/topics/resources/providing-resources.html#BestMatch) . It is a simpler version, with less rules, and adapted to the iOS ecosystem. 
 
-You can create resource files that apply only when some criterias are meet. You can create a resource file name resources-ipad-land.plist. and another resources-ipad-port.plist.
+You can create resource files that apply only when some criterias are meet. 
+You can create a resource file name "resources-ipad-land.plist". and another "resources-ipad-port.plist".
+If you are using an ipad in landscape the values returned will be from the first file.
 
-If you are using an ipad in landscape the values returned will be from the first file. The rules are defined in the following table, each configuration has its own qualifier values that you can use in your resource filename.
+The rules are defined in the following table, each configuration has its own qualifier values that you can use in your resource filename.
 
 | Configuration | Qualifier values | Description  |
 | :--------------------| :---------------------------| :----------------------------|
-|  Device model |  ipad iphone iphone6 iphon6plus  |  Specify the device model. You can be specific to apply the rule to more cases, or have a criteria more generic | 
-|  Orientation |  port land  | Device orientation |                                                     
+|  Device model |  e.g. ipad iphone iphone6 iphon6plus  |  Specify the device model. You can be specific to apply the rule to more cases, or have a criteria more generic | 
+|  Orientation |  e.g. port land  | Device orientation |                                                     
 
 
 ## Usage
@@ -33,8 +35,7 @@ If you are using an ipad in landscape the values returned will be from the first
 
 The first step is to create your resource files with .plist extension, with your criterias.
 
-![alt text](http://s23.postimg.org/gj1n2xfbe/Screen_Shot_2015_02_22_at_13_45_42.jpg "Resource files")
-
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
 
 ### Create the MDResourceManager
 
