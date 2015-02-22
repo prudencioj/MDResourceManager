@@ -17,6 +17,9 @@ Pod::Spec.new do |s|
 
   s.subspec 'Manager' do |ss|
     ss.source_files = 'Pod/Classes/Manager'
+    ss.dependency 'MDResourceManager/Filter'
+    ss.dependency 'MDResourceManager/Parser'
+    ss.dependency 'MDResourceManager/Criteria'
   end
 
   s.subspec 'Filter' do |ss|
@@ -32,6 +35,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Resource' do |ss|
     ss.source_files = 'Pod/Classes/Resource'
+    ss.dependency 'MDResourceManager/Criteria'
   end
 
   s.subspec 'Parser' do |ss|

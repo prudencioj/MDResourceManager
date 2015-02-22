@@ -11,7 +11,10 @@ PODS:
   - MDResourceManager/Filter (0.1.0):
     - MDResourceManager/Criteria
     - MDResourceManager/Resource
-  - MDResourceManager/Manager (0.1.0)
+  - MDResourceManager/Manager (0.1.0):
+    - MDResourceManager/Criteria
+    - MDResourceManager/Filter
+    - MDResourceManager/Parser
   - MDResourceManager/Parser (0.1.0):
     - MDResourceManager/Criteria
     - MDResourceManager/Resource
@@ -26,6 +29,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MDResourceManager: 7a15e075f199af590d54da4ab87a7d6767907ff5
+  MDResourceManager: 5873e338470d4834bb41769248ad3280333d56a2
 
 COCOAPODS: 0.35.0
