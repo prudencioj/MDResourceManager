@@ -14,12 +14,12 @@ Easily extended, you can provide your own criterias. e.g. handle different value
 
 ## How it works
 
-[0.10.x](http://developer.android.com/guide/topics/resources/providing-resources.html#BestMatch) 
+It is inspired by the resource management in [Android](http://developer.android.com/guide/topics/resources/providing-resources.html#BestMatch) . It is a simple version, with less rules, and adapted to the iOS ecosystem. 
 
 | Configuration | Qualifier values | Description  |
 | --------------------| :---------------------------:|----------------------------:|
-|  Device model |  Example: ipad iphone iphone6 iphon6plus    |                  | 
-|          |                    |                |                                                     
+|  Device model |  Example: -- ipad -- iphone -- iphone6 -- iphon6plus --  |  Specify the device model. -- You can be specific to apply the rule to more cases, or have a criteria more generic | 
+|  Orientation |  Example: -- port -- land  | Device orientation |                                                     
 
 
 ## Usage
