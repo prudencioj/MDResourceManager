@@ -1,27 +1,17 @@
-#
-# Be sure to run `pod lib lint MDResourceManager.podspec' to ensure this is a
-# valid spec and remove all comments before submitting the spec.
-#
-# Any lines starting with a # are optional, but encouraged
-#
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
 
 Pod::Spec.new do |s|
   s.name             = "MDResourceManager"
   s.version          = "0.1.0"
-  s.summary          = "A short description of MDResourceManager."
+  s.summary          = "iOS Resource Management, the Android way"
   s.description      = <<-DESC
-                       An optional longer description of MDResourceManager
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       Provide resources independently of your code. Manage different sizes, strings depending on the device type or orientation.
+                       * Inspired in the Resource management of Android.
+                       * Easily extended, you can provide your own criterias. e.g. handle different values depending on your product jurisdictions.
                        DESC
   s.homepage         = "https://github.com/<GITHUB_USERNAME>/MDResourceManager"
   s.license          = 'MIT'
   s.author           = { "Joao Prudencio" => "joao.prudencio@mindera.com" }
   s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/MDResourceManager.git", :tag => s.version.to_s }
-
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
