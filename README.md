@@ -13,9 +13,36 @@ Easily extended, you can provide your own criterias. e.g. handle different value
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+### Create resource files
 
-## Requirements
+The first step is to create your resource files with .plist extension. 
+
+<p align="center" >
+  <img src="http://s23.postimg.org/gj1n2xfbe/Screen_Shot_2015_02_22_at_13_45_42.jpg" alt="AFNetworking" title="Resource files with .plist extension">
+</p>
+
+### Create ResourceManager
+
+```objective-c
+
+NSArray *criterias = @[[[MDDeviceResourceCriteria alloc] init],
+                       [[MDOrientationResourceCriteria alloc] init]];
+    
+MDResourceManager *resourceManager = [[MDResourceManager alloc] initWithPrefixFileName:@"dimensions"
+                                                                             criterias:criterias];
+    
+```
+
+### Ask the manager for values 
+
+```objective-c
+
+CGFloat labelFontSize1 = [resourceManager floatForKey:@"labelFontSize1"];
+CGFloat labelFontSize2 = [resourceManager floatForKey:@"labelFontSize2"];
+
+```
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Installation
 
