@@ -8,6 +8,7 @@
 
 #import "MDOrientationResourceCriteria.h"
 #import <UIKit/UIKit.h>
+#import "MDDeviceUtil.h"
 
 static NSString *const kQualifierPrefixLandscape = @"land";
 static NSString *const kQualifierPrefixPortrait = @"port";
@@ -18,12 +19,9 @@ static NSString *const kQualifierPrefixPortrait = @"port";
 
 - (BOOL)meetCriteriaWith:(NSString *)qualifier {
     
-    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-    BOOL isDevicePortrait = UIDeviceOrientationIsPortrait(interfaceOrientation);
-    
     BOOL isQualifierPortrait = [qualifier hasPrefix:kQualifierPrefixPortrait];
     
-    return isDevicePortrait == isQualifierPortrait;
+    return MDDeviceUtil.isDevicePortrait == isQualifierPortrait;
 }
 
 - (BOOL)respondsToQualifier:(NSString *)qualifier {

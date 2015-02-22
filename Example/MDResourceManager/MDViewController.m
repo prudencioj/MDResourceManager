@@ -35,6 +35,7 @@
     MDResourceManager *resourceManager = [MDAppDelegate sharedInstance].resourceManager;
     
     CGFloat labelFontSize = [resourceManager floatForKey:@"labelFontSize"];
+    
     self.label.font = [UIFont fontWithName:@"GillSans"
                                       size:labelFontSize];
     self.label.text = [NSString stringWithFormat:@"Font size %.02f",labelFontSize];

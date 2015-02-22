@@ -11,6 +11,10 @@
 #import "MDResourceQualifier.h"
 #import "MDResource.h"
 
+static NSString *const kFileExtension = @".plist";
+static NSString *const kExtensionPredicate = @"self ENDSWITH '.plist'";
+static NSString *const kNamePredicate = @"SELF like[c] %@";
+
 @implementation MDResourcePropertyListParser
 
 + (NSArray *)resourcesWithPrefixFileName:(NSString *)prefixFileName
@@ -19,8 +23,8 @@
     NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSArray *dirContents = [fileManager contentsOfDirectoryAtPath:bundleRoot error:nil];
-    NSPredicate *extensionPredicate = [NSPredicate predicateWithFormat:@"self ENDSWITH '.plist'"];
-    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:@"SELF like[c] %@",
+    NSPredicate *extensionPredicate = [NSPredicate predicateWithFormat:kExtensionPredicate];
+    NSPredicate *namePredicate = [NSPredicate predicateWithFormat:kNamePredicate,
                                   [NSString stringWithFormat:@"%@*",prefixFileName]];
     
     NSCompoundPredicate *predicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType
@@ -32,7 +36,7 @@
     [resourceFileNames enumerateObjectsUsingBlock:^(NSString *file, NSUInteger idx, BOOL *stop) {
         
         NSString* fileName = [[file lastPathComponent] stringByDeletingPathExtension];
-        NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@".plist"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:kFileExtension];
         NSDictionary *values = [NSDictionary dictionaryWithContentsOfFile:path];
         
         NSArray *resourceQualifiers = [MDResourcePropertyListParser resourceQualifiersFromString:fileName
