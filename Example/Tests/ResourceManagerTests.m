@@ -47,5 +47,4 @@
     XCTAssert(dimension == 10.0f, @"Pass");
 }
 
-
 @end
