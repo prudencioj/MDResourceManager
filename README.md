@@ -35,7 +35,7 @@ The rules are defined in the following table, each configuration has its own qua
 
 The first step is to create your resource files with .plist extension, with your criterias.
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Resource files](https://i.imgur.com/ENw1l8S.png?1)
 
 ### Create the MDResourceManager
 
