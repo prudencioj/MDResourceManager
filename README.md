@@ -9,6 +9,7 @@
 ## iOS Resource Management, the Android way.
 Provide resources independently of your code. Manage different sizes, strings depending on the device type or orientation.
 Inspired in the Resource management of Android.
+
 Easily extended, you can provide your own criterias. e.g. handle different values depending on your product jurisdictions.
 
 
@@ -16,21 +17,30 @@ Easily extended, you can provide your own criterias. e.g. handle different value
 
 It is inspired by the resource management in [Android](http://developer.android.com/guide/topics/resources/providing-resources.html#BestMatch) . It is a simple version, with less rules, and adapted to the iOS ecosystem. 
 
+You can create resource files that apply only when some criterias are meet. You can create a resource file name resources-ipad-land.plist. and another resources-ipad-port.plist.
+
+If you are using an ipad in landscape the values returned will be from the first file. The rules are defined in the following table, each configuration has its own qualifier values that you can use in your resource filename.
+
 | Configuration | Qualifier values | Description  |
-| --------------------| :---------------------------:|----------------------------:|
-|  Device model |  Example: -- ipad -- iphone -- iphone6 -- iphon6plus --  |  Specify the device model. -- You can be specific to apply the rule to more cases, or have a criteria more generic | 
-|  Orientation |  Example: -- port -- land  | Device orientation |                                                     
+| :--------------------| :---------------------------| :----------------------------|
+|  Device model |  ipad iphone iphone6 iphon6plus  |  Specify the device model. You can be specific to apply the rule to more cases, or have a criteria more generic | 
+|  Orientation |  port land  | Device orientation |                                                     
 
 
 ## Usage
 
 ### Create resource files
 
-The first step is to create your resource files with .plist extension. 
+The first step is to create your resource files with .plist extension, with your criterias.
 
-![alt tag](http://s23.postimg.org/gj1n2xfbe/Screen_Shot_2015_02_22_at_13_45_42.jpg)
+![alt text](http://s23.postimg.org/gj1n2xfbe/Screen_Shot_2015_02_22_at_13_45_42.jpg "Resource files")
 
-### Create ResourceManager
+
+### Create the MDResourceManager
+
+Create a MDResourceManager and give it your criterias. Bear in mind that the order is important, the best match algoritm considers the order you give your criterias.
+
+You can also create your own criterias.
 
 ```objective-c
 
