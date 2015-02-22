@@ -93,7 +93,7 @@
                           forKey:(NSString *)key {
     
     // we should stop looking if only one resource is available
-    // or priority rules are not available anymore
+    // or resource criterias are not available anymore
     
     if (resources.count == 1 ||
         resourceCriterias.count == 0) {
@@ -127,7 +127,8 @@
             }
         }
         
-        if ([resourceCriteria meetCriteriaWith:foundResourceQualifier.qualifier]) {
+        if (foundResourceQualifier &&
+            [resourceCriteria meetCriteriaWith:foundResourceQualifier.qualifier]) {
             
             // There are cases where multiples resources exist with the same rule.
             // e.g. dimensions-sw200 and dimensions-sw300 in an iPhone6 device.
@@ -160,7 +161,7 @@
     
     if (!matchingResource) {
         
-        // If No resources match, return to step 2 and look at the next qualifier.
+        // 3. If No resources match, return to step 2 and look at the next qualifier.
         
         if (resourceCriterias.count > 0) {
             
@@ -178,7 +179,7 @@
     
     [resources removeObjectsAtIndexes:notMatchingIndexes];
     
-    // 6. Go back and repeat until only one resource remains.
+    // 5. Go back and repeat until only one resource remains.
     
     if (resourceCriterias.count > 0) {
         

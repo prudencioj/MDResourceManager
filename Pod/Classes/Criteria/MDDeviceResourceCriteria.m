@@ -22,9 +22,12 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
     BOOL isPad = [qualifier isEqualToString:kQualifierPrefixIpad];
     BOOL isEqualDevice = isPad == MDDeviceUtil.isDevicePad;
     
-    NSString *model = [self modelFromDevice:qualifier];
+    NSString *currentModel = [self modelFromDevice:qualifier];
+    NSString *deviceModel = [self currentModel].copy;
     
-    BOOL isEqualModel = model && model.length > 0? [[self currentModel] containsString:model]: YES;
+    BOOL containsModel = [deviceModel rangeOfString:currentModel].length > 0;
+    
+    BOOL isEqualModel = currentModel && currentModel.length > 0? containsModel: YES;
     
     return isEqualDevice && isEqualModel;
 }
@@ -46,7 +49,7 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
     if (!hasModel1 && hasModel2) {
         
         return YES;
-    } else if (hasModel1 && hasModel2 && model1.length > model1.length) {
+    } else if (hasModel1 && hasModel2 && model2.length > model1.length) {
         
         return YES;
     } else {
@@ -69,7 +72,7 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
     if ([device hasPrefix:kQualifierPrefixIpad]) {
         
         deviceDescription = [device substringToIndex:kQualifierPrefixIpad.length];
-    } else {
+    } else if ([device hasPrefix:kQualifierPrefixIphone]){
         
         deviceDescription = [device substringToIndex:kQualifierPrefixIphone.length];
     }
