@@ -7,13 +7,11 @@
 //
 
 #import "MDResourceFilter.h"
-#import "MDResourceQualifier.h"
 #import "MDResourceCriteriaProtocol.h"
 
 @interface MDResourceFilter ()
 
 @property (nonatomic, strong, readonly) NSArray *criterias;
-@property (nonatomic, strong, readonly) NSDictionary *criteriaByClass;
 
 @end
 
@@ -26,7 +24,6 @@
     if (self) {
         
         _criterias = criterias;
-        _criteriaByClass = [self criteriaByClassFromCriterias:criterias];
     }
     return self;
 }
@@ -62,11 +59,12 @@
             // if exists now check for its resource qualifiers
             // all qualifiers must meet its criteria
             
-            [resource.resourceQualifiers enumerateObjectsUsingBlock:^(MDResourceQualifier *resourceQualifier, NSUInteger idx, BOOL *stop) {
+            [resource.resourceQualifiers enumerateObjectsUsingBlock:^(NSString *resourceQualifier, NSUInteger idx, BOOL *stop) {
                 
-                id<MDResourceCriteriaProtocol> criteria = self.criteriaByClass[resourceQualifier.criteriaClass.description];
+                id<MDResourceCriteriaProtocol> criteria = [self findCriteriaForQualifier:resourceQualifier
+                                                                         inCriteriasList:self.criterias];
                 
-                if (![criteria meetCriteriaWith:resourceQualifier.qualifier]) {
+                if (![criteria meetCriteriaWith:resourceQualifier]) {
                     
                     meetsAllCriterias = NO;
                     *stop = YES;
@@ -108,18 +106,18 @@
     // 3. Do any of the resource directories include this qualifier?
 
     __block MDResource *matchingResource = nil;
-    __block MDResourceQualifier *matchingResourceQualifier = nil;
+    __block NSString *matchingResourceQualifier = nil;
     __block NSMutableIndexSet *notMatchingIndexes = [[NSMutableIndexSet alloc] init];
     
     [resources enumerateObjectsUsingBlock:^(MDResource *resource, NSUInteger resourceIndex, BOOL *stop) {
         
-        __block MDResourceQualifier *foundResourceQualifier = nil;
+        __block NSString *foundResourceQualifier = nil;
         
         if (resource.values[key]) {
             
-            for (MDResourceQualifier *resourceQualifier in resource.resourceQualifiers) {
+            for (NSString *resourceQualifier in resource.resourceQualifiers) {
                 
-                if ([resourceCriteria isKindOfClass:resourceQualifier.criteriaClass]) {
+                if ([resourceCriteria respondsToQualifier:resourceQualifier]) {
                     
                     foundResourceQualifier = resourceQualifier;
                     break;
@@ -128,7 +126,7 @@
         }
         
         if (foundResourceQualifier &&
-            [resourceCriteria meetCriteriaWith:foundResourceQualifier.qualifier]) {
+            [resourceCriteria meetCriteriaWith:foundResourceQualifier]) {
             
             // There are cases where multiples resources exist with the same rule.
             // e.g. dimensions-sw200 and dimensions-sw300 in an iPhone6 device.
@@ -137,8 +135,8 @@
             // In this case we would choose dimensions-sw300
             
             if (!matchingResourceQualifier ||
-                [resourceCriteria shouldOverrideQualifier:matchingResourceQualifier.qualifier
-                                            withQualifier:foundResourceQualifier.qualifier]) {
+                [resourceCriteria shouldOverrideQualifier:matchingResourceQualifier
+                                            withQualifier:foundResourceQualifier]) {
             
                 if (matchingResourceQualifier) {
                     
@@ -148,9 +146,6 @@
                 
                 matchingResourceQualifier = foundResourceQualifier;
                 matchingResource = resource;
-            } else {
-                
-                [notMatchingIndexes addIndex:resourceIndex];
             }
         } else {
             
@@ -193,16 +188,22 @@
 
 #pragma mark - Helper
 
-- (NSDictionary *)criteriaByClassFromCriterias:(NSArray *)criterias {
+- (id<MDResourceCriteriaProtocol>)findCriteriaForQualifier:(NSString *)qualifier inCriteriasList:(NSArray *)criterias {
     
-    NSMutableDictionary *criteriaByClass = @{}.mutableCopy;
+    // TODO dictionary?
+    
+    __block id<MDResourceCriteriaProtocol> criteriaFound = nil;
     
     [criterias enumerateObjectsUsingBlock:^(id<MDResourceCriteriaProtocol> criteria, NSUInteger idx, BOOL *stop) {
         
-        criteriaByClass[criteria.class.description] = criteria;
+        if ([criteria respondsToQualifier:qualifier]) {
+            
+            *stop = YES;
+            criteriaFound = criteria;
+        }
     }];
     
-    return criteriaByClass.copy;
+    return criteriaFound;
 }
 
 @end

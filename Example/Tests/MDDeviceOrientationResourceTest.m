@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "OCMock.h"
-#import "MDTestUtil.h"
+#import "MDDeviceUtil.h"
 #import "MDOrientationResourceCriteria.h"
 
 @interface MDDeviceOrientationResourceTest : XCTestCase
@@ -43,7 +43,8 @@
 
 - (void)testCriteriaMeetPortrait {
     
-    [MDTestUtil mockDeviceOrientationIsPortrait:YES];
+    id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
+    OCMStub([deviceUtilMock isDevicePortrait]).andReturn(YES);
     
     MDOrientationResourceCriteria *orientationCriteria = [[MDOrientationResourceCriteria alloc] init];
     
@@ -52,11 +53,14 @@
     
     XCTAssert(![orientationCriteria meetCriteriaWith:@"land"]);
     XCTAssert(![orientationCriteria meetCriteriaWith:@"landscape"]);
+    
+    [deviceUtilMock stopMocking];
 }
 
 - (void)testCriteriaMeetLandscape {
     
-    [MDTestUtil mockDeviceOrientationIsPortrait:NO];
+    id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
+    OCMStub([deviceUtilMock isDevicePortrait]).andReturn(NO);
     
     MDOrientationResourceCriteria *orientationCriteria = [[MDOrientationResourceCriteria alloc] init];
     
@@ -65,16 +69,21 @@
     
     XCTAssert(![orientationCriteria meetCriteriaWith:@"port"]);
     XCTAssert(![orientationCriteria meetCriteriaWith:@"portrait"]);
+    
+    [deviceUtilMock stopMocking];
 }
 
 - (void)testCriteriaOverride {
     
-    [MDTestUtil mockDeviceOrientationIsPortrait:NO];
-
+    id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
+    OCMStub([deviceUtilMock isDevicePortrait]).andReturn(NO);
+    
     MDOrientationResourceCriteria *orientationCriteria = [[MDOrientationResourceCriteria alloc] init];
     
     XCTAssert(![orientationCriteria shouldOverrideQualifier:@"port" withQualifier:@"land"]);
     XCTAssert(![orientationCriteria shouldOverrideQualifier:@"land" withQualifier:@"port"]);
+    
+    [deviceUtilMock stopMocking];
 }
 
 @end

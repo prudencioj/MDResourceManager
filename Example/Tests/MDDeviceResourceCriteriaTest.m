@@ -10,7 +10,8 @@
 #import <XCTest/XCTest.h>
 #import "OCMock.h"
 #import "MDDeviceResourceCriteria.h"
-#import "MDTestUtil.h"
+#import "MDDeviceUtil.h"
+#import "OCMock.h"
 
 @interface MDDeviceResourceCriteriaTest : XCTestCase
 
@@ -39,9 +40,11 @@
 }
 
 - (void)testCreteriaMeetIpad {
-    
-    [MDTestUtil mockDeviceModel:@"ipadmini1" isIpad:YES];
 
+    id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
+    OCMStub([deviceUtilMock isDevicePad]).andReturn(YES);
+    OCMStub([deviceUtilMock deviceVersion]).andReturn(@"ipadmini1");
+    
     MDDeviceResourceCriteria *deviceCriteria = [[MDDeviceResourceCriteria alloc] init];
     
     XCTAssert([deviceCriteria meetCriteriaWith:@"ipad"]);
@@ -51,11 +54,15 @@
     XCTAssert(![deviceCriteria meetCriteriaWith:@"ipad2"]);
     
     XCTAssert(![deviceCriteria meetCriteriaWith:@"land"]);
+    
+    [deviceUtilMock stopMocking];
 }
 
 - (void)testCriteriaMeetIphone {
     
-    [MDTestUtil mockDeviceModel:@"iphone6" isIpad:NO];
+    id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
+    OCMStub([deviceUtilMock isDevicePad]).andReturn(NO);
+    OCMStub([deviceUtilMock deviceVersion]).andReturn(@"iphon6");
 
     MDDeviceResourceCriteria *deviceCriteria = [[MDDeviceResourceCriteria alloc] init];
     
@@ -66,11 +73,15 @@
     
     XCTAssert(![deviceCriteria meetCriteriaWith:@"iphone6plus"]);
     XCTAssert(![deviceCriteria meetCriteriaWith:@"IphonE6PLUS"]);
+    
+    [deviceUtilMock stopMocking];
 }
 
 - (void)testCriteriaOverride {
     
-    [MDTestUtil mockDeviceModel:@"iphone6plus" isIpad:NO];
+    id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
+    OCMStub([deviceUtilMock isDevicePad]).andReturn(NO);
+    OCMStub([deviceUtilMock deviceVersion]).andReturn(@"iphon6plus");
 
     MDDeviceResourceCriteria *deviceCriteria = [[MDDeviceResourceCriteria alloc] init];
     
@@ -81,6 +92,8 @@
 
     XCTAssert(![deviceCriteria shouldOverrideQualifier:@"iphone6plus" withQualifier:@"iphone"]);
     XCTAssert(![deviceCriteria shouldOverrideQualifier:@"ipPHne6plus" withQualifier:@"iPHonE"]);
+    
+    [deviceUtilMock stopMocking];
 }
 
 @end

@@ -8,7 +8,6 @@
 
 #import "MDResourcePropertyListParser.h"
 #import "MDResourceCriteriaProtocol.h"
-#import "MDResourceQualifier.h"
 #import "MDResource.h"
 
 static NSString *const kFileExtension = @".plist";
@@ -18,8 +17,7 @@ static NSString *const kQualifierSeparator = @"-";
 
 @implementation MDResourcePropertyListParser
 
-+ (NSArray *)resourcesWithPrefixFileName:(NSString *)prefixFileName
-                               criterias:(NSArray *)criterias {
++ (NSArray *)resourcesWithPrefixFileName:(NSString *)prefixFileName {
 
     NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -40,8 +38,7 @@ static NSString *const kQualifierSeparator = @"-";
         NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:kFileExtension];
         NSDictionary *values = [NSDictionary dictionaryWithContentsOfFile:path];
         
-        NSArray *resourceQualifiers = [MDResourcePropertyListParser resourceQualifiersFromString:fileName
-                                                                                       criterias:criterias];
+        NSArray *resourceQualifiers = [MDResourcePropertyListParser resourceQualifiersFromString:fileName];
         
         MDResource *resource = [[MDResource alloc] initWithValues:values
                                                resourceQualifiers:resourceQualifiers];
@@ -52,31 +49,16 @@ static NSString *const kQualifierSeparator = @"-";
     return resources.copy;
 }
 
-+ (NSArray *)resourceQualifiersFromString:(NSString *)resourceQualifiersString criterias:(NSArray *)criterias {
++ (NSArray *)resourceQualifiersFromString:(NSString *)resourceQualifiersString {
     
-    NSMutableArray *resourceQualifiers = @[].mutableCopy;
     NSMutableArray *qualifiersArray = [resourceQualifiersString componentsSeparatedByString:kQualifierSeparator].mutableCopy;
     
-    if (qualifiersArray.count > 1) {
+    if (qualifiersArray.count > 0) {
         
         [qualifiersArray removeObjectAtIndex:0];
-        
-        [qualifiersArray enumerateObjectsUsingBlock:^(NSString *qualifier, NSUInteger idx, BOOL *stop) {
-            
-            [criterias enumerateObjectsUsingBlock:^(id<MDResourceCriteriaProtocol> criteria, NSUInteger idx, BOOL *stop) {
-                
-                if ([criteria respondsToQualifier:qualifier]) {
-                    
-                    MDResourceQualifier *resourceQualifier = [[MDResourceQualifier alloc] initWithQualifier:[qualifier lowercaseString] criteriaClass:[criteria class]];
-                    [resourceQualifiers addObject:resourceQualifier];
-                    
-                    *stop = YES;
-                }
-            }];
-        }];
     }
     
-    return resourceQualifiers.copy;
+    return qualifiersArray.copy;
 }
 
 @end

@@ -42,10 +42,8 @@
     [self.resourceManager loadResources];
     
     CGFloat dimension = [self.resourceManager floatForKey:@"size"];
-
-    NSLog(@"%f",dimension);
     
-    XCTAssert(dimension == 10.0f, @"Pass");
+    XCTAssert(dimension == 10.0f);
 }
 
 @end

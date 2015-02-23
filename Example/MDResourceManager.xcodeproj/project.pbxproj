@@ -13,7 +13,6 @@
 		49E9AFDE1A9A05300019CFF5 /* MDDeviceResourceCriteriaTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E9AFDD1A9A05300019CFF5 /* MDDeviceResourceCriteriaTest.m */; };
 		49E9AFE01A9A0A2A0019CFF5 /* MDDeviceOrientationResourceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E9AFDF1A9A0A2A0019CFF5 /* MDDeviceOrientationResourceTest.m */; };
 		49E9AFE21A9A0BE50019CFF5 /* MDResourceFilterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E9AFE11A9A0BE50019CFF5 /* MDResourceFilterTest.m */; };
-		49E9AFE61A9A0C6B0019CFF5 /* MDTestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E9AFE51A9A0C6B0019CFF5 /* MDTestUtil.m */; };
 		49FF01F21A97F7AD00A84030 /* dimensions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF01EC1A97F7AD00A84030 /* dimensions.plist */; };
 		49FF022B1A98CE7400A84030 /* dimensions-iphone6-land.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF022A1A98CE7400A84030 /* dimensions-iphone6-land.plist */; };
 		49FF023B1A98F16F00A84030 /* dimensions-iphone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49FF023A1A98F16F00A84030 /* dimensions-iphone.plist */; };
@@ -56,8 +55,6 @@
 		49E9AFDD1A9A05300019CFF5 /* MDDeviceResourceCriteriaTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDeviceResourceCriteriaTest.m; sourceTree = "<group>"; };
 		49E9AFDF1A9A0A2A0019CFF5 /* MDDeviceOrientationResourceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDeviceOrientationResourceTest.m; sourceTree = "<group>"; };
 		49E9AFE11A9A0BE50019CFF5 /* MDResourceFilterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDResourceFilterTest.m; sourceTree = "<group>"; };
-		49E9AFE41A9A0C6B0019CFF5 /* MDTestUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTestUtil.h; sourceTree = "<group>"; };
-		49E9AFE51A9A0C6B0019CFF5 /* MDTestUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTestUtil.m; sourceTree = "<group>"; };
 		49FF01EC1A97F7AD00A84030 /* dimensions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dimensions.plist; sourceTree = "<group>"; };
 		49FF022A1A98CE7400A84030 /* dimensions-iphone6-land.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone6-land.plist"; sourceTree = "<group>"; };
 		49FF023A1A98F16F00A84030 /* dimensions-iphone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dimensions-iphone.plist"; sourceTree = "<group>"; };
@@ -120,8 +117,6 @@
 		49E9AFE31A9A0C5C0019CFF5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				49E9AFE41A9A0C6B0019CFF5 /* MDTestUtil.h */,
-				49E9AFE51A9A0C6B0019CFF5 /* MDTestUtil.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -437,7 +432,6 @@
 			files = (
 				49E9AFE21A9A0BE50019CFF5 /* MDResourceFilterTest.m in Sources */,
 				6003F5BC195388D20070C39A /* MDResourceManagerTest.m in Sources */,
-				49E9AFE61A9A0C6B0019CFF5 /* MDTestUtil.m in Sources */,
 				49E9AFE01A9A0A2A0019CFF5 /* MDDeviceOrientationResourceTest.m in Sources */,
 				49E9AFDE1A9A05300019CFF5 /* MDDeviceResourceCriteriaTest.m in Sources */,
 			);

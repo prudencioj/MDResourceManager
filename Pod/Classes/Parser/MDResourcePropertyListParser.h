@@ -10,7 +10,6 @@
 
 @interface MDResourcePropertyListParser : NSObject
 
-+ (NSArray *)resourcesWithPrefixFileName:(NSString *)prefixFileName
-                               criterias:(NSArray *)criterias;
++ (NSArray *)resourcesWithPrefixFileName:(NSString *)prefixFileName;
 
 @end

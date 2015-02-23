@@ -58,8 +58,7 @@
 
 - (void)loadResources {
     
-    self.resources = [MDResourcePropertyListParser resourcesWithPrefixFileName:self.prefixFileName
-                                                                     criterias:self.criterias];
+    self.resources = [MDResourcePropertyListParser resourcesWithPrefixFileName:self.prefixFileName];
 }
 
 - (id)valueForKey:(NSString *)key {
