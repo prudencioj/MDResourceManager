@@ -168,6 +168,35 @@
     [deviceUtilMock stopMocking];
 }
 
+- (void)testSecondaryCriteriaMultipleCriteriaFilter {
+    
+    id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
+    OCMStub([deviceUtilMock isDevicePad]).andReturn(YES);
+    OCMStub([deviceUtilMock deviceVersion]).andReturn(@"ipadmini");
+    OCMStub([deviceUtilMock isDevicePortrait]).andReturn(NO);
+    
+    // create filter with multiple criterias
+    MDResourceFilter *filter = [[MDResourceFilter alloc] initWithCriterias:@[[[MDDeviceResourceCriteria alloc] init],
+                                                                             [[MDOrientationResourceCriteria alloc] init]]];
+    
+    // setup three resources with different qualifiers
+    NSString *valueKey = @"key";
+    MDResource *resource1 = [[MDResource alloc] initWithValues:@{valueKey:@(1)}
+                                            resourceQualifiers:@[@"landscape"]];
+    MDResource *resource2 = [[MDResource alloc] initWithValues:@{valueKey:@(2)}
+                                            resourceQualifiers:@[@"ipad",@"portrait"]];
+    MDResource *resource3 = [[MDResource alloc] initWithValues:@{valueKey:@(2)}
+                                            resourceQualifiers:@[@"iphone4",@"portrait"]];
+    
+    // should match landscape constraint
+    
+    MDResource *result = [filter filterResources:@[resource1,resource2,resource3]
+                                           forKey:valueKey];
+    XCTAssert([result.values[valueKey] isEqual:@(1)]);
+    
+    [deviceUtilMock stopMocking];
+}
+
 - (void)testNoMatchMultipleCriteriaFilter {
     
     id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
@@ -192,21 +221,72 @@
     // send the resources in different orders to be sure is not order depedent
     
     MDResource *result = [filter filterResources:@[resource1,resource2,resource3]
-                                           forKey:valueKey];
+                                          forKey:valueKey];
     XCTAssert(!result.values[valueKey]);
     
     [deviceUtilMock stopMocking];
 }
 
-- (void)testMultipleCriteriasFilter {
-    XCTAssert(YES, @"Pass");
-}
-
 - (void)testFilterPerformance {
-    // This is an example of a performance test case.
+    
+    id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
+    OCMStub([deviceUtilMock isDevicePad]).andReturn(NO);
+    OCMStub([deviceUtilMock deviceVersion]).andReturn(@"iphone6plus");
+    OCMStub([deviceUtilMock isDevicePortrait]).andReturn(NO);
+    
+    // create filter with multiple criterias
+    MDResourceFilter *filter = [[MDResourceFilter alloc] initWithCriterias:@[[[MDDeviceResourceCriteria alloc] init],
+                                                                             [[MDOrientationResourceCriteria alloc] init]]];
+    
+    // some values to generate a huge data set
+    NSInteger numberOfResources = 1000;
+    NSInteger numberOfValuesPerResource = 1000;
+    NSInteger correctIndex = numberOfResources/2;
+
+    NSMutableArray *resources = @[].mutableCopy;
+
+    for (NSInteger i = 0; i< numberOfResources; i++) {
+     
+        NSMutableDictionary *values = @{}.mutableCopy;
+        
+        for (NSInteger j = 0; j< numberOfValuesPerResource; j++) {
+            
+            NSString *key = [NSString stringWithFormat:@"%li",(long)j];
+            values[key] = @(j);
+        }
+        
+        NSMutableArray *resourceQualifiers = @[].mutableCopy;
+
+        if (i == correctIndex) {
+            
+            [resourceQualifiers addObjectsFromArray:@[@"iphone6plus",@"landscape"]];
+        } else if (i%2 == 0) {
+            
+            [resourceQualifiers addObjectsFromArray:@[@"ipad",@"landscape"]];
+        } else {
+            
+            [resourceQualifiers addObjectsFromArray:@[@"iphone",@"portrait"]];
+        }
+        
+        MDResource *resource = [[MDResource alloc] initWithValues:values
+                                               resourceQualifiers:resourceQualifiers.copy];
+        
+        [resources addObject:resource];
+    }
+    
     [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+ 
+        NSString *key = [NSString stringWithFormat:@"%li",(long)correctIndex];
+        MDResource *resource = [filter filterResources:resources
+                                                forKey:key];
+        
+        XCTAssert(resource.values[key]);
+        XCTAssert([resource.values[key] isEqual:@(correctIndex)]);
+        XCTAssert([resource.resourceQualifiers containsObject:@"iphone6plus"]);
+        XCTAssert([resource.resourceQualifiers containsObject:@"landscape"]);
     }];
+    
+    [deviceUtilMock stopMocking];
 }
 
 @end

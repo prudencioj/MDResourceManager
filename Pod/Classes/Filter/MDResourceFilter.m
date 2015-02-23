@@ -103,7 +103,7 @@
     
     __block id<MDResourceCriteriaProtocol> resourceCriteria = resourceCriterias.firstObject;
     
-    // 3. Do any of the resource directories include this qualifier?
+    // 3. Do any of the resources have a qualifier for this criteria?
 
     __block MDResource *matchingResource = nil;
     __block NSString *matchingResourceQualifier = nil;
@@ -154,9 +154,9 @@
         
     }];
     
+    // 3. If No resources match, return to step 2 and look at the next qualifier.
+
     if (!matchingResource) {
-        
-        // 3. If No resources match, return to step 2 and look at the next qualifier.
         
         if (resourceCriterias.count > 0) {
             

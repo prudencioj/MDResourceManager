@@ -38,5 +38,9 @@
 - (NSString *)stringForKey:(NSString *)key;
 - (NSNumber *)numberForKey:(NSString *)key;
 - (CGFloat)floatForKey:(NSString *)key;
+- (NSInteger)integerForKey:(NSString *)key;
+- (BOOL)boolForKey:(NSString *)key;
+- (NSArray *)arrayForKey:(NSString *)key;
+- (NSDictionary *)dictionaryForKey:(NSString *)key;
 
 @end
