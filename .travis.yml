@@ -6,12 +6,11 @@ language: objective-c
 cache: cocoapods
 podfile: Example/Podfile
 before_install:
+- gem i slather --no-ri --no-rdoc
 - gem install cocoapods # Since Travis is not always on latest version
 - pod install --project-directory=Example
-- rvm use $RVM_RUBY_VERSION
 
 install:
-- bundle install --without=documentation --path ../travis_bundle_dir
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 
 script:
