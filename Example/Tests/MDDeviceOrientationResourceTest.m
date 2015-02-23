@@ -34,6 +34,7 @@
     XCTAssert([orientationCriteria respondsToQualifier:@"landscape"]);
     XCTAssert([orientationCriteria respondsToQualifier:@"port"]);
     XCTAssert([orientationCriteria respondsToQualifier:@"portrait"]);
+    XCTAssert([orientationCriteria respondsToQualifier:@"poRTrAaIt"]);
     
     XCTAssert(![orientationCriteria respondsToQualifier:@"otherqualifier"]);
     XCTAssert(![orientationCriteria respondsToQualifier:@"otherportqualifier"]);

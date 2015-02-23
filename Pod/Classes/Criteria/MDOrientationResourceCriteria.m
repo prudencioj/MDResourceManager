@@ -19,15 +19,18 @@ static NSString *const kQualifierPrefixPortrait = @"port";
 
 - (BOOL)meetCriteriaWith:(NSString *)qualifier {
     
-    BOOL isQualifierPortrait = [qualifier hasPrefix:kQualifierPrefixPortrait];
+    NSString *lowerCaseQualifier = [qualifier lowercaseString];
+
+    BOOL isQualifierPortrait = [lowerCaseQualifier hasPrefix:kQualifierPrefixPortrait];
     
     return MDDeviceUtil.isDevicePortrait == isQualifierPortrait;
 }
 
 - (BOOL)respondsToQualifier:(NSString *)qualifier {
     
-    return [qualifier hasPrefix:kQualifierPrefixLandscape] ||
-           [qualifier hasPrefix:kQualifierPrefixPortrait];
+    NSString *lowerCaseQualifier = [qualifier lowercaseString];
+    return [lowerCaseQualifier hasPrefix:kQualifierPrefixLandscape] ||
+           [lowerCaseQualifier hasPrefix:kQualifierPrefixPortrait];
 }
 
 - (BOOL)shouldOverrideQualifier:(NSString *)qualifier1 withQualifier:(NSString *)qualifier2 {

@@ -67,7 +67,7 @@ static NSString *const kQualifierSeparator = @"-";
                 
                 if ([criteria respondsToQualifier:qualifier]) {
                     
-                    MDResourceQualifier *resourceQualifier = [[MDResourceQualifier alloc] initWithQualifier:qualifier criteriaClass:[criteria class]];
+                    MDResourceQualifier *resourceQualifier = [[MDResourceQualifier alloc] initWithQualifier:[qualifier lowercaseString] criteriaClass:[criteria class]];
                     [resourceQualifiers addObject:resourceQualifier];
                     
                     *stop = YES;
