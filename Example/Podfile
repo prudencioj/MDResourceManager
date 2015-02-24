@@ -1,10 +1,10 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'MDResourceManager', :exclusive => true do
-  pod 'MDResourceManager'
+    pod 'MDResourceManager', :path => '../.'
 end
 
 target 'Tests', :exclusive => true do
-  pod 'MDResourceManager'
+  pod 'MDResourceManager' , :path => '../.'
   pod 'OCMock' 
 end
