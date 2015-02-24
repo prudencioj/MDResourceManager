@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  In order to create your own Criteria you need to create a class that implements the MDResourceCriteriaProtocol protocol
+ */
 @protocol MDResourceCriteriaProtocol <NSObject>
 
 @required
-
 /**
  *  Validate if the criteria is responsible of handling this qualifier.
  *  e.g. Orientation criteria should only accept landscape/portrait qualifiers.
