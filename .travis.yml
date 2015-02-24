@@ -10,6 +10,6 @@ before_install:
 - gem install slather --no-rdoc --no-ri --no-document --quiet;
 - pod install --project-directory=Example
 script:
-  - xctool test -workspace Example/MDResourceManager.xcworkspace -scheme MDResourceManager-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=YES
+- xctool test -workspace Example/MDResourceManager.xcworkspace -scheme MDResourceManager-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- pod lib lint --quick
 after_success: slather
-language: objective-c
