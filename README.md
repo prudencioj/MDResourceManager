@@ -50,6 +50,8 @@ NSArray *criterias = @[[[MDDeviceResourceCriteria alloc] init],
     
 MDResourceManager *resourceManager = [[MDResourceManager alloc] initWithPrefixFileName:@"dimensions"
                                                                              criterias:criterias];
+
+[resourceManager loadResources];
     
 ```
 
