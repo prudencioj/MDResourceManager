@@ -21,6 +21,11 @@ static NSString *const kQualifierPrefixPortrait = @"port";
     
     NSString *lowerCaseQualifier = [qualifier lowercaseString];
 
+    if (![self respondsToQualifier:qualifier]) {
+        
+        return NO;
+    }
+    
     BOOL isQualifierPortrait = [lowerCaseQualifier hasPrefix:kQualifierPrefixPortrait];
     
     return MDDeviceUtil.isDevicePortrait == isQualifierPortrait;

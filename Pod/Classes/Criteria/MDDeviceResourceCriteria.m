@@ -21,21 +21,26 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
     
     NSString *lowerCaseQualifier = [qualifier lowercaseString];
 
+    if (![self respondsToQualifier:qualifier]) {
+        
+        return NO;
+    }
+    
     // to meet the criteria the qualifier must represent the same device.
     // if the qualifier has no specific model the criteria meets.
-    // e.g. device = iphone6plus qualifier = iphone -> YES
-    //      device = iphone6plus qualifier = iphone6 -> YES
-    //      device = iphone6plus qualifier = iphone6plus -> YES
-    //      device = iphone6plus qualifier = iphone5 -> NO
+    // e.g. device = iphone6plus, qualifier = iphone -> YES
+    //      device = iphone6plus, qualifier = iphone6 -> YES
+    //      device = iphone6plus, qualifier = iphone6plus -> YES
+    //      device = iphone6plus, qualifier = iphone5 -> NO
 
-    BOOL isPad = [lowerCaseQualifier isEqualToString:kQualifierPrefixIpad];
-    BOOL isEqualDevice = isPad == MDDeviceUtil.isDevicePad;
+    // check if it's the same device type: iphone/ipad
+    BOOL qualifierIsPad = [lowerCaseQualifier isEqualToString:kQualifierPrefixIpad];
+    BOOL isEqualDevice = qualifierIsPad == MDDeviceUtil.isDevicePad;
     
-    NSString *currentModel = [self modelFromDevice:lowerCaseQualifier];
-    NSString *deviceModel = [self currentModel].copy;
-    
+    // check if it's the exact same model, or contains part of the model description.
+    NSString *currentModel = [self modelFromQualifier:lowerCaseQualifier];
+    NSString *deviceModel = [self deviceModel];
     BOOL containsModel = [deviceModel rangeOfString:currentModel].length > 0;
-    
     BOOL isEqualModel = currentModel && currentModel.length > 0? containsModel: YES;
     
     return isEqualDevice && isEqualModel;
@@ -56,8 +61,8 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
     // choose the qualifier more specific
     // e.g. iphone6plus should override iphone6
     
-    NSString *model1 = [self modelFromDevice:lowerCaseQualifier1];
-    NSString *model2 = [self modelFromDevice:lowerCaseQualifier2];
+    NSString *model1 = [self modelFromQualifier:lowerCaseQualifier1];
+    NSString *model2 = [self modelFromQualifier:lowerCaseQualifier2];
 
     BOOL hasModel1 = model1 && model1.length > 0;
     BOOL hasModel2 = model2 && model2.length > 0;
@@ -65,7 +70,8 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
     if (!hasModel1 && hasModel2) {
         
         return YES;
-    } else if (hasModel1 && hasModel2 && model2.length > model1.length) {
+    } else if (hasModel1 && hasModel2 &&
+               model2.length > model1.length) {
         
         return YES;
     } else {
@@ -76,29 +82,32 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
 
 #pragma mark - Helper
 
-- (NSString *)currentModel {
+- (NSString *)deviceModel {
     
-    return [self modelFromDevice:[MDDeviceUtil deviceVersion]];
+    return [self modelFromQualifier:[MDDeviceUtil deviceVersion]];
 }
 
-- (NSString *)modelFromDevice:(NSString *)device {
+- (NSString *)modelFromQualifier:(NSString *)qualifier {
+    
+    // remove ipad/iphone prefix from the qualifier.
+    // we get the device model from that substring
     
     NSString *deviceDescription = @"";
     
-    if ([device hasPrefix:kQualifierPrefixIpad]) {
+    if ([qualifier hasPrefix:kQualifierPrefixIpad]) {
         
-        deviceDescription = [device substringToIndex:kQualifierPrefixIpad.length];
-    } else if ([device hasPrefix:kQualifierPrefixIphone]){
+        deviceDescription = [qualifier substringToIndex:kQualifierPrefixIpad.length];
+    } else if ([qualifier hasPrefix:kQualifierPrefixIphone]){
         
-        deviceDescription = [device substringToIndex:kQualifierPrefixIphone.length];
+        deviceDescription = [qualifier substringToIndex:kQualifierPrefixIphone.length];
     }
     
-    if ([deviceDescription isEqualToString:device]) {
+    if ([deviceDescription isEqualToString:qualifier]) {
         
         return @"";
     } else {
         
-        return [device substringFromIndex:deviceDescription.length];
+        return [qualifier substringFromIndex:deviceDescription.length];
     }
 }
 
