@@ -58,7 +58,10 @@
 
 - (void)loadResources {
     
-    self.resources = [MDResourcePropertyListParser resourcesWithPrefixFileName:self.prefixFileName];
+    if (!self.resources) {
+        
+        self.resources = [MDResourcePropertyListParser resourcesWithPrefixFileName:self.prefixFileName];
+    }
 }
 
 #pragma mark - Public Fetching values
