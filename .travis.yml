@@ -9,9 +9,9 @@ cache: cocoapods
 podfile: Example/Podfile
 
 before_install:
-	- gem install cocoapods --no-rdoc --no-ri --no-document --quiet;
-	- gem install slather --no-rdoc --no-ri --no-document --quiet;
-	- cd Example && pod install && cd $TRAVIS_BUILD_DIR
+- gem install cocoapods --no-rdoc --no-ri --no-document --quiet;
+- gem install slather --no-rdoc --no-ri --no-document --quiet;
+- cd Example && pod install && cd $TRAVIS_BUILD_DIR
 
 script:
   - xctool test -workspace Example/MDResourceManager.xcworkspace -scheme MDResourceManager-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
