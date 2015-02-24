@@ -6,10 +6,11 @@ language: objective-c
 cache: cocoapods
 podfile: Example/Podfile
 before_install:
-- gem install cocoapods --no-rdoc --no-ri --no-document --quiet;
-- gem install slather --no-rdoc --no-ri --no-document --quiet;
+- gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+- gem install slather --no-rdoc --no-ri --no-document --quiet
+- gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 - pod install --project-directory=Example
 script:
-- xctool test -workspace Example/MDResourceManager.xcworkspace -scheme MDResourceManager-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- set -o pipefail && xcodebuild test -workspace Example/stuff.xcworkspace -scheme stuff-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
 - pod lib lint --quick
 after_success: slather
