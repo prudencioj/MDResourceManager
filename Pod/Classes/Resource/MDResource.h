@@ -10,9 +10,15 @@
 
 @interface MDResource : NSObject
 
-@property (nonatomic, strong, readonly) NSDictionary *values;
+@property (nonatomic, strong, readonly) NSString *fileName;
 @property (nonatomic, strong, readonly) NSArray *resourceQualifiers;
+@property (nonatomic, strong, readonly) NSDictionary *values;
 
-- (instancetype)initWithValues:(NSDictionary *)values resourceQualifiers:(NSArray *)resourceQualifiers;
+- (instancetype)initWithFileName:(NSString *)fileName
+                          values:(NSDictionary *)values
+              resourceQualifiers:(NSArray *)resourceQualifiers;
+
+- (instancetype)initWithValues:(NSDictionary *)values
+            resourceQualifiers:(NSArray *)resourceQualifiers;
 
 @end

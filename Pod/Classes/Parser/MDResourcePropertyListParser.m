@@ -40,8 +40,9 @@ static NSString *const kQualifierSeparator = @"-";
         
         NSArray *resourceQualifiers = [MDResourcePropertyListParser resourceQualifiersFromString:fileName];
         
-        MDResource *resource = [[MDResource alloc] initWithValues:values
-                                               resourceQualifiers:resourceQualifiers];
+        MDResource *resource = [[MDResource alloc] initWithFileName:fileName
+                                                             values:values
+                                                 resourceQualifiers:resourceQualifiers];
         
         [resources addObject:resource];
     }];
