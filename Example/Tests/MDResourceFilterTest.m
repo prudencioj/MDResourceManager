@@ -20,14 +20,6 @@
 
 @implementation MDResourceFilterTest
 
-- (void)setUp {
-    [super setUp];
-}
-
-- (void)tearDown {
-    [super tearDown];
-}
-
 - (void)testSimpleMatchSingleCriteriaMatchFilter {
     
     id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);

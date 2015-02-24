@@ -18,14 +18,6 @@
 
 @implementation MDDeviceOrientationResourceTest
 
-- (void)setUp {
-    [super setUp];
-}
-
-- (void)tearDown {
-    [super tearDown];
-}
-
 - (void)testCriteriaRespondsTo {
     
     MDOrientationResourceCriteria *orientationCriteria = [[MDOrientationResourceCriteria alloc] init];

@@ -19,14 +19,6 @@
 
 @implementation MDDeviceResourceCriteriaTest
 
-- (void)setUp {
-    [super setUp];
-}
-
-- (void)tearDown {
-    [super tearDown];
-}
-
 - (void)testCriteriaRespondsTo {
 
     MDDeviceResourceCriteria *deviceCriteria = [[MDDeviceResourceCriteria alloc] init];
@@ -39,7 +31,7 @@
     XCTAssert(![deviceCriteria respondsToQualifier:@"land"]);
 }
 
-- (void)testCreteriaMeetIpad {
+- (void)testCriteriaMeetIpad {
 
     id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
     OCMStub([deviceUtilMock isDevicePad]).andReturn(YES);
