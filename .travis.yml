@@ -3,17 +3,13 @@
 # * https://github.com/supermarin/xcpretty#usage
 
 language: objective-c
-
 cache: cocoapods
-
 podfile: Example/Podfile
-
 before_install:
 - gem install cocoapods --no-rdoc --no-ri --no-document --quiet;
 - gem install slather --no-rdoc --no-ri --no-document --quiet;
-- pod install
-
+- pod install --project-directory=Example
 script:
   - xctool test -workspace Example/MDResourceManager.xcworkspace -scheme MDResourceManager-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=YES
-
 after_success: slather
+language: objective-c
