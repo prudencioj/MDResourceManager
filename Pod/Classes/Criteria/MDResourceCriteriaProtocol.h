@@ -40,4 +40,11 @@
  */
 - (BOOL)shouldOverrideQualifier:(NSString *)qualifier1 withQualifier:(NSString *)qualifier2;
 
+/**
+ *  This is mostly used to know if we can use cache for this criteria.
+ *  @return return YES if the value of your criteria can change in run time.
+ *  e.g. orientatio can change, the device model don't.
+ */
+- (BOOL)criteriaChangesInRuntime;
+
 @end

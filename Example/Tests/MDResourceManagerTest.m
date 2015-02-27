@@ -12,6 +12,7 @@
 #import "MDDeviceResourceCriteria.h"
 #import "MDOrientationResourceCriteria.h"
 #import "OCMock.h"
+#import "MDDeviceUtil.h"
 
 @interface MDResourceManagerTest : XCTestCase
 

@@ -13,7 +13,27 @@
 static NSString *const kQualifierPrefixIphone = @"iphone";
 static NSString *const kQualifierPrefixIpad = @"ipad";
 
+@interface MDDeviceResourceCriteria ()
+
+@property (nonatomic) BOOL isDevicePad;
+@property (nonatomic) NSString *deviceModel;
+
+@end
+
 @implementation MDDeviceResourceCriteria
+
+- (instancetype)init {
+
+    self = [super init];
+
+    if (self) {
+        
+        _isDevicePad = MDDeviceUtil.isDevicePad;
+        _deviceModel = [self modelFromQualifier:[MDDeviceUtil deviceVersion]];
+    }
+    
+    return self;
+}
 
 #pragma mark - MDResourceCriteriaProtocol
 
@@ -35,11 +55,11 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
 
     // check if it's the same device type: iphone/ipad
     BOOL qualifierIsPad = [lowerCaseQualifier isEqualToString:kQualifierPrefixIpad];
-    BOOL isEqualDevice = qualifierIsPad == MDDeviceUtil.isDevicePad;
+    BOOL isEqualDevice = qualifierIsPad == self.isDevicePad;
     
     // check if it's the exact same model, or contains part of the model description.
     NSString *currentModel = [self modelFromQualifier:lowerCaseQualifier];
-    NSString *deviceModel = [self deviceModel];
+    NSString *deviceModel = self.deviceModel;
     BOOL containsModel = [deviceModel rangeOfString:currentModel].length > 0;
     BOOL isEqualModel = currentModel && currentModel.length > 0? containsModel: YES;
     
@@ -82,11 +102,6 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
 
 #pragma mark - Helper
 
-- (NSString *)deviceModel {
-    
-    return [self modelFromQualifier:[MDDeviceUtil deviceVersion]];
-}
-
 - (NSString *)modelFromQualifier:(NSString *)qualifier {
     
     // remove ipad/iphone prefix from the qualifier.
@@ -109,6 +124,11 @@ static NSString *const kQualifierPrefixIpad = @"ipad";
         
         return [qualifier substringFromIndex:deviceDescription.length];
     }
+}
+
+- (BOOL)criteriaChangesInRuntime {
+    
+    return NO;
 }
 
 @end

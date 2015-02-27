@@ -28,6 +28,7 @@ static NSString *const kQualifierPrefixPortrait = @"port";
     
     BOOL isQualifierPortrait = [lowerCaseQualifier hasPrefix:kQualifierPrefixPortrait];
     
+    NSLog(@"%i",MDDeviceUtil.isDevicePortrait);
     return MDDeviceUtil.isDevicePortrait == isQualifierPortrait;
 }
 
@@ -41,6 +42,11 @@ static NSString *const kQualifierPrefixPortrait = @"port";
 - (BOOL)shouldOverrideQualifier:(NSString *)qualifier1 withQualifier:(NSString *)qualifier2 {
     
     return NO;
+}
+
+- (BOOL)criteriaChangesInRuntime {
+    
+    return YES;
 }
 
 @end

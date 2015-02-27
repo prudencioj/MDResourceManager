@@ -21,6 +21,9 @@
 
 @property (nonatomic, strong) MDResourceFilter *resourceFilter;
 
+@property (nonatomic, strong) NSCache *cache; // not sure the filter should be the one handling a cache
+@property (nonatomic) BOOL canCacheResources;
+
 @end
 
 @implementation MDResourceManager
@@ -68,9 +71,18 @@
 
 - (id)valueForKey:(NSString *)key {
     
-    MDResource *resource = [self.resourceFilter filterResources:self.resources
-                                                         forKey:key];
-    return resource.values[key];
+    id value = [self cachedValueForKey:key];
+    
+    if (!value) {
+        
+        MDResource *resource = [self.resourceFilter filterResources:self.resources
+                                                 forKey:key];
+        
+        value = resource.values[key];
+        [self cacheValue:value forKey:key];
+    }
+    
+    return value;
 }
 
 - (NSString *)stringForKey:(NSString *)key {
@@ -139,6 +151,61 @@
         
         return NO;
     }
+}
+
+#pragma mark - Manage cache
+
+// TODO move this to other class
+
+- (NSCache *)cache {
+    
+    if (!_cache) {
+        
+        _cache = [[NSCache alloc] init];
+    }
+    
+    return _cache;
+}
+
+- (BOOL)canCacheResources {
+    
+    if (!_canCacheResources) {
+        
+        _canCacheResources = [self canCacheResourcesWithCriterias:self.criterias];
+    }
+    
+    return _canCacheResources;
+}
+
+- (void)cacheValue:(id)value forKey:(NSString *)key {
+    
+    if (self.canCacheResources && value) {
+        
+        [self.cache setObject:value forKey:key];
+    }
+}
+
+- (id)cachedValueForKey:(NSString *)key {
+    
+    return [self.cache objectForKey:key];
+}
+
+- (BOOL)canCacheResourcesWithCriterias:(NSArray *)criterias {
+    
+    // only cache when no criteria changes in run time
+    
+    __block BOOL canCache = YES;
+    
+    [criterias enumerateObjectsUsingBlock:^(id<MDResourceCriteriaProtocol> criteria, NSUInteger idx, BOOL *stop) {
+        
+        if ([criteria criteriaChangesInRuntime]) {
+            
+            canCache = NO;
+            *stop = YES;
+        }
+    }];
+    
+    return canCache;
 }
 
 @end
