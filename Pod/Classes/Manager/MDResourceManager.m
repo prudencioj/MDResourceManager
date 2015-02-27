@@ -63,6 +63,10 @@
     
     if (!self.resources) {
         
+        // FIXME - we should create an instance of the parser.
+        //       - we should have more than one parser, json, plist,xml
+        //       - find a neat way to avoid loading files, that we know will never match our criterias.
+        //         
         self.resources = [MDResourcePropertyListParser resourcesWithPrefixFileName:self.prefixFileName];
     }
 }

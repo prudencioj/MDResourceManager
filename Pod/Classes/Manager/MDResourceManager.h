@@ -11,6 +11,8 @@
 
 @interface MDResourceManager : NSObject
 
+// TODO init with other file extensions, at the moment only supports .plist
+
 #pragma mark - Initialization
 
 /** @brief Manage resources resource files considering the criterias.
