@@ -10,6 +10,10 @@
 #import "MDResourceCriteriaProtocol.h"
 #import "MDResource.h"
 
+// TODO needs refactoring.
+// - decouple finding files, and parsing the files itself.
+//  the logic to find files will always be the same, but we can have a lot of file types.
+
 static NSString *const kFileExtension = @".plist";
 static NSString *const kExtensionPredicate = @"self ENDSWITH '.plist'";
 static NSString *const kNamePredicate = @"SELF like[c] %@";
@@ -51,6 +55,8 @@ static NSString *const kQualifierSeparator = @"-";
 }
 
 + (NSArray *)resourceQualifiersFromString:(NSString *)resourceQualifiersString {
+    
+    // TODO is this separator something that can change? let the user of the pod specify the language?
     
     NSMutableArray *qualifiersArray = [resourceQualifiersString componentsSeparatedByString:kQualifierSeparator].mutableCopy;
     

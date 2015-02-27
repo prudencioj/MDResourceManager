@@ -103,6 +103,12 @@
     return deviceNamesByCode;
 }
 
+/**
+ *  When running in a simulator we can't get the device type.
+ *  As a workaround we try to estimate based on the screen dimensions.
+ *  It's far from being accurate, and it should not go to release builds.
+ *  @return device identifier
+ */
 + (NSString *)simulatorDeviceType {
     
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {

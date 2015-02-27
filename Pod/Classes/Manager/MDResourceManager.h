@@ -16,7 +16,7 @@
 #pragma mark - Initialization
 
 /** @brief Manage resources resource files considering the criterias.
- *  @param fileName Prefix filename of your resource files
+ *  @param fileName Prefix filename of your .plist resource files
  *  @param criterias list of criterias MDResourceCriteriaProtocol used to filter your resources.
  *         the order matters, it should be ordered by the most important criteria first
  */
@@ -25,14 +25,18 @@
 
 /** @brief Manage resources resource files considering the criterias
  *      The default criterias will be used: device and orientation.
- *  @param fileName Prefix filename of your resource files
+ *  @param fileName Prefix filename of your .plist resource files
  */
 - (instancetype)initWithPrefixFileName:(NSString *)fileName;
 
 
 /** @brief Load the resource files with the filename prefix.
+ *  @warning loading resources reads from disk.
  */
 - (void)loadResources;
+
+// TODO support for async loading of resources
+//- (void)loadResourcesAsync:(void (^)(BOOL success))completion;
 
 #pragma mark - Fetching values
 
