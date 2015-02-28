@@ -11,6 +11,12 @@
 
 @interface MDResourceManager : NSObject
 
+/**
+ *  The criterias to apply the filter can be changed at any time.
+ *  A criteria must implement MDResourceCriteriaProtocol.
+ */
+@property (nonatomic, strong) NSArray *criterias;
+
 // TODO init with other file extensions, at the moment only supports .plist
 
 #pragma mark - Initialization

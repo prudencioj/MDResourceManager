@@ -15,13 +15,11 @@
 @interface MDResourceManager ()
 
 @property (nonatomic, strong, readonly) NSString *prefixFileName;
-@property (nonatomic, strong, readonly) NSArray *criterias;
-
 @property (nonatomic, strong) NSArray *resources;
 
 @property (nonatomic, strong) MDResourceFilter *resourceFilter;
 
-@property (nonatomic, strong) NSCache *cache; // not sure the filter should be the one handling a cache
+@property (nonatomic, strong) NSCache *cache;
 @property (nonatomic) BOOL canCacheResources;
 
 @end
@@ -30,7 +28,8 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithPrefixFileName:(NSString *)fileName criterias:(NSArray *)criterias {
+- (instancetype)initWithPrefixFileName:(NSString *)fileName
+                             criterias:(NSArray *)criterias {
     
     self = [super init];
     
@@ -58,6 +57,21 @@
     
     return self;
 }
+
+#pragma mark - Properties 
+
+- (void)setCriterias:(NSArray *)criterias {
+    
+    _criterias = criterias;
+    
+    // create a new instance, or just set a criterias property too?
+    self.resourceFilter = [[MDResourceFilter alloc] initWithCriterias:criterias];
+    
+    // invalidate the cache everytime the criterias change.
+    [self invalidateCache];
+}
+
+#pragma mark - Public 
 
 - (void)loadResources {
     
@@ -213,6 +227,11 @@
     }];
     
     return canCache;
+}
+
+- (void)invalidateCache {
+    
+    [self.cache removeAllObjects];
 }
 
 @end
