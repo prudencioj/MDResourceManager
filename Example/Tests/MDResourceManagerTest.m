@@ -112,4 +112,55 @@
     XCTAssertFalse(nonExistingValue);
 }
 
+- (void)testChangingCriteriasResourceManager {
+    
+    id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
+    OCMStub([deviceUtilMock isDevicePortrait]).andReturn(NO);
+    MDOrientationResourceCriteria *criteria = [[MDOrientationResourceCriteria alloc] init];
+
+    MDResourceManager *resourceManager = [[MDResourceManager alloc] initWithPrefixFileName:@"testresource"
+                                                                                 criterias:@[criteria]];
+    [resourceManager loadResources];
+    
+    XCTAssertEqualObjects([resourceManager stringForKey:@"anotherKey"], @"anothervaluelandscape");
+    
+    [deviceUtilMock stopMocking];
+    
+    // now change the criterias, and check if the manager fetch the correct value
+    
+    resourceManager.criterias = @[];
+    XCTAssertEqualObjects([resourceManager stringForKey:@"anotherKey"], @"anothervalue");
+}
+
+- (void)testChangingCriteriasInvalidatesCacheResourceManager {
+    
+    id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
+    OCMStub([deviceUtilMock isDevicePortrait]).andReturn(NO);
+    OCMStub([deviceUtilMock isDevicePad]).andReturn(YES);
+    OCMStub([deviceUtilMock deviceVersion]).andReturn(@"ipad");
+    
+    MDDeviceResourceCriteria *deviceCriteria = [[MDDeviceResourceCriteria alloc] init];
+    MDOrientationResourceCriteria *orientationCriteria = [[MDOrientationResourceCriteria alloc] init];
+
+    MDResourceManager *resourceManager = [[MDResourceManager alloc] initWithPrefixFileName:@"testresource"];
+    [resourceManager loadResources];
+    
+    XCTAssertEqualObjects([resourceManager stringForKey:@"anotherKey"], @"anothervalueipad");
+    
+    // now change the criterias, and check if the manager fetch the correct value
+    // test criterias that changes in run time, that can be cached.
+    // changing criterias should invalidate the cache
+    
+    resourceManager.criterias = @[orientationCriteria];
+    XCTAssertEqualObjects([resourceManager stringForKey:@"anotherKey"], @"anothervaluelandscape");
+    
+    resourceManager.criterias = @[deviceCriteria];
+    XCTAssertEqualObjects([resourceManager stringForKey:@"anotherKey"], @"anothervalueipad");
+    
+    resourceManager.criterias = @[];
+    XCTAssertEqualObjects([resourceManager stringForKey:@"anotherKey"], @"anothervalue");
+    
+    [deviceUtilMock stopMocking];
+}
+
 @end

@@ -14,5 +14,7 @@
 	<integer>5</integer>
 	<key>floatKey</key>
 	<real>6.7</real>
+	<key>anotherKey</key>
+	<string>anothervalue</string>
 </dict>
 </plist>

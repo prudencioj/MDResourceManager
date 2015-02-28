@@ -4,5 +4,7 @@
 <dict>
 	<key>mykey</key>
 	<string>myvalueipad</string>
+	<key>anotherKey</key>
+	<string>anothervalueipad</string>
 </dict>
 </plist>
