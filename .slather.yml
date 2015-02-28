@@ -1,5 +1,0 @@
-coverage_service: coveralls
-xcodeproj: Example/MDResourceManager.xcodeproj
-source_directory: ./Pod/Classes
-ignore:
-  - Example/*
