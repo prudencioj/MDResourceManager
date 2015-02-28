@@ -75,6 +75,9 @@
 
 - (id)valueForKey:(NSString *)key {
     
+    // TODO proper lazy loading? loadResources it's not really necesary.
+    [self loadResources];
+    
     id value = [self cachedValueForKey:key];
     
     if (!value) {
