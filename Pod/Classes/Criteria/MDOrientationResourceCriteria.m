@@ -28,7 +28,6 @@ static NSString *const kQualifierPrefixPortrait = @"port";
     
     BOOL isQualifierPortrait = [lowerCaseQualifier hasPrefix:kQualifierPrefixPortrait];
     
-    NSLog(@"%i",MDDeviceUtil.isDevicePortrait);
     return MDDeviceUtil.isDevicePortrait == isQualifierPortrait;
 }
 
