@@ -1,3 +1,11 @@
+# Version 0.1.4
+
+#### 2015/03/01
+
+ - Criterias can now be changed after creating the manager.
+ - Resources lazy loading.
+ - Removed logs
+
 # Version 0.1.3
 
 #### 2015/02/26

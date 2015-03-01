@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "MDResourceManager"
-  s.version          = "0.1.3"
+  s.version          = "0.1.4"
   s.summary          = "iOS Resource Management, the Android way"
   s.description      = <<-DESC
                        Provide resources independently of your code. Manage different sizes, strings depending on the device type or orientation.
