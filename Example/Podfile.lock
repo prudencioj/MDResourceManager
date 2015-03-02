@@ -1,26 +1,26 @@
 PODS:
-  - MDResourceManager (0.1.3):
-    - MDResourceManager/Criteria (= 0.1.3)
-    - MDResourceManager/Filter (= 0.1.3)
-    - MDResourceManager/Manager (= 0.1.3)
-    - MDResourceManager/Parser (= 0.1.3)
-    - MDResourceManager/Resource (= 0.1.3)
-    - MDResourceManager/Util (= 0.1.3)
-  - MDResourceManager/Criteria (0.1.3):
+  - MDResourceManager (0.1.4):
+    - MDResourceManager/Criteria (= 0.1.4)
+    - MDResourceManager/Filter (= 0.1.4)
+    - MDResourceManager/Manager (= 0.1.4)
+    - MDResourceManager/Parser (= 0.1.4)
+    - MDResourceManager/Resource (= 0.1.4)
+    - MDResourceManager/Util (= 0.1.4)
+  - MDResourceManager/Criteria (0.1.4):
     - MDResourceManager/Util
-  - MDResourceManager/Filter (0.1.3):
+  - MDResourceManager/Filter (0.1.4):
     - MDResourceManager/Criteria
     - MDResourceManager/Resource
-  - MDResourceManager/Manager (0.1.3):
+  - MDResourceManager/Manager (0.1.4):
     - MDResourceManager/Criteria
     - MDResourceManager/Filter
     - MDResourceManager/Parser
-  - MDResourceManager/Parser (0.1.3):
+  - MDResourceManager/Parser (0.1.4):
     - MDResourceManager/Criteria
     - MDResourceManager/Resource
-  - MDResourceManager/Resource (0.1.3):
+  - MDResourceManager/Resource (0.1.4):
     - MDResourceManager/Criteria
-  - MDResourceManager/Util (0.1.3)
+  - MDResourceManager/Util (0.1.4)
   - OCMock (3.1.2)
 
 DEPENDENCIES:
@@ -32,7 +32,7 @@ EXTERNAL SOURCES:
     :path: ../.
 
 SPEC CHECKSUMS:
-  MDResourceManager: 2c98f0ce2da4492b4bfbc4dafa3adb9e25aae006
+  MDResourceManager: bca5e2dfce0e193154ed110320a6a5b3deaaca37
   OCMock: ecdd510b73ef397f2f97274785c1e87fd147c49f
 
 COCOAPODS: 0.35.0
