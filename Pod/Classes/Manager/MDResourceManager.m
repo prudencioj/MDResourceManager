@@ -231,6 +231,7 @@
 
 - (void)invalidateCache {
     
+    self.canCacheResources = [self canCacheResourcesWithCriterias:self.criterias];
     [self.cache removeAllObjects];
 }
 
