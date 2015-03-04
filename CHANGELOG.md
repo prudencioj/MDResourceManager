@@ -1,3 +1,10 @@
+# Version 0.1.5
+
+#### 2015/03/04
+
+ - Fix Invalidating cache issues.
+ - Ability to provide custom orientations in the orientation criteria.
+
 # Version 0.1.4
 
 #### 2015/03/01
