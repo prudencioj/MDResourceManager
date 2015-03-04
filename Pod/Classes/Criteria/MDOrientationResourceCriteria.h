@@ -11,4 +11,8 @@
 
 @interface MDOrientationResourceCriteria : NSObject<MDResourceCriteriaProtocol>
 
+@property (nonatomic) UIInterfaceOrientation interfaceOrientation;
+
+- (instancetype)initWithInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
+
 @end

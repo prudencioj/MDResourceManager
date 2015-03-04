@@ -15,6 +15,18 @@ static NSString *const kQualifierPrefixPortrait = @"port";
 
 @implementation MDOrientationResourceCriteria
 
+- (instancetype)initWithInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+
+    self = [super init];
+    
+    if (self) {
+        
+        _interfaceOrientation = interfaceOrientation;
+    }
+    
+    return self;
+}
+
 #pragma mark - MDResourceCriteriaProtocol
 
 - (BOOL)meetCriteriaWith:(NSString *)qualifier {
@@ -28,7 +40,7 @@ static NSString *const kQualifierPrefixPortrait = @"port";
     
     BOOL isQualifierPortrait = [lowerCaseQualifier hasPrefix:kQualifierPrefixPortrait];
     
-    return MDDeviceUtil.isDevicePortrait == isQualifierPortrait;
+    return [self isDevicePortrait] == isQualifierPortrait;
 }
 
 - (BOOL)respondsToQualifier:(NSString *)qualifier {
@@ -46,6 +58,13 @@ static NSString *const kQualifierPrefixPortrait = @"port";
 - (BOOL)criteriaChangesInRuntime {
     
     return YES;
+}
+
+#pragma mark - 
+
+- (BOOL)isDevicePortrait {
+    
+    return self.interfaceOrientation != UIInterfaceOrientationUnknown? UIDeviceOrientationIsPortrait(self.interfaceOrientation): MDDeviceUtil.isDevicePortrait;
 }
 
 @end

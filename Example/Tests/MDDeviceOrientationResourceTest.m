@@ -78,4 +78,21 @@
     [deviceUtilMock stopMocking];
 }
 
+- (void)testCriteriaCustomOrientation {
+    
+    id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
+    OCMStub([deviceUtilMock isDevicePortrait]).andReturn(YES);
+    
+    MDOrientationResourceCriteria *orientationCriteria = [[MDOrientationResourceCriteria alloc] initWithInterfaceOrientation:UIInterfaceOrientationLandscapeLeft];
+    
+    XCTAssert([orientationCriteria meetCriteriaWith:@"landscape"]);
+    XCTAssert(![orientationCriteria meetCriteriaWith:@"portrait"]);
+
+    orientationCriteria.interfaceOrientation = UIInterfaceOrientationPortrait;
+    XCTAssert(![orientationCriteria meetCriteriaWith:@"landscape"]);
+    XCTAssert([orientationCriteria meetCriteriaWith:@"portrait"]);
+    
+    [deviceUtilMock stopMocking];
+}
+
 @end
