@@ -47,13 +47,30 @@
 #pragma mark - Fetching values
 
 - (id)valueForKey:(NSString *)key;
+- (id)valueForKey:(NSString *)key defaultValue:(id)defaultValue;
+
 - (NSString *)stringForKey:(NSString *)key;
+- (NSString *)stringForKey:(NSString *)key defaultValue:(NSString *)defaultValue;
+
 - (NSNumber *)numberForKey:(NSString *)key;
-- (CGFloat)floatForKey:(NSString *)key;
-- (NSInteger)integerForKey:(NSString *)key;
-- (BOOL)boolForKey:(NSString *)key;
+- (NSNumber *)numberForKey:(NSString *)key defaultValue:(NSNumber *)defaultValue;
+
 - (NSArray *)arrayForKey:(NSString *)key;
+- (NSArray *)arrayForKey:(NSString *)key defaultValue:(NSArray *)defaultValue;
+
 - (NSDictionary *)dictionaryForKey:(NSString *)key;
+- (NSDictionary *)dictionaryForKey:(NSString *)key defaultValue:(NSDictionary *)defaultValue;
+
+- (CGFloat)floatForKey:(NSString *)key;
+- (CGFloat)floatForKey:(NSString *)key defaultValue:(CGFloat)defaultValue;
+
+- (NSInteger)integerForKey:(NSString *)key;
+- (NSInteger)integerForKey:(NSString *)key defaultValue:(NSInteger)defaultValue;
+
+- (BOOL)boolForKey:(NSString *)key;
+- (BOOL)boolForKey:(NSString *)key defaultValue:(BOOL)defaultValue;
+
 - (UIEdgeInsets)edgeInsetsForKey:(NSString *)key;
+- (UIEdgeInsets)edgeInsetsForKey:(NSString *)key defaultValue:(UIEdgeInsets)defaultValue;
 
 @end

@@ -30,6 +30,9 @@
     XCTAssertEqualObjects(stringValue, @"some string");
     NSString *nonExistingValue = [resourceManager valueForKey:@"notExistingKey"];
     XCTAssertNil(nonExistingValue);
+    
+    NSString *nonExistingValueDefault = [resourceManager valueForKey:@"notExistingKeyDefault" defaultValue:@"default"];
+    XCTAssertEqualObjects(nonExistingValueDefault, @"default");
 }
 
 - (void)testStringFetchingResourceManager {
@@ -42,6 +45,9 @@
     XCTAssertEqualObjects(stringValue, @"some string");
     NSString *nonExistingValue = [resourceManager stringForKey:@"notExistingKey"];
     XCTAssertNil(nonExistingValue);
+    
+    NSString *nonExistingValueDefault = [resourceManager valueForKey:@"notExistingKeyDefault" defaultValue:@"default"];
+    XCTAssertEqualObjects(nonExistingValueDefault, @"default");
 }
 
 - (void)testDictionaryFetchingResourceManager {
@@ -54,6 +60,9 @@
     XCTAssert([dictionaryValue isKindOfClass:[NSDictionary class]]);
     NSDictionary *nonExistingValue = [resourceManager dictionaryForKey:@"notExistingKey"];
     XCTAssertNil(nonExistingValue);
+    
+    NSDictionary *nonExistingValueDefault = [resourceManager dictionaryForKey:@"notExistingKeyDefault" defaultValue:@{@"1":@"2"}];
+    XCTAssertEqualObjects(nonExistingValueDefault, @{@"1":@"2"});
 }
 
 - (void)testArrayFetchingResourceManager {
@@ -66,6 +75,9 @@
     XCTAssert([arrayValue isKindOfClass:[NSArray class]]);
     NSArray *nonExistingValue = [resourceManager arrayForKey:@"notExistingKey"];
     XCTAssertNil(nonExistingValue);
+    
+    NSArray *nonExistingValueDefault = [resourceManager arrayForKey:@"notExistingKeyDefault" defaultValue:@[@"1"]];
+    XCTAssertEqualObjects(nonExistingValueDefault, @[@"1"]);
 }
 
 - (void)testNumberFetchingResourceManager {
@@ -77,6 +89,9 @@
     XCTAssertEqualObjects(numberValue, @(5));
     NSNumber *nonExistingValue = [resourceManager numberForKey:@"notExistingKey"];
     XCTAssertNil(nonExistingValue);
+    
+    NSNumber *nonExistingValueDefault = [resourceManager numberForKey:@"notExistingKeyDefault" defaultValue:@(8)];
+    XCTAssertEqualObjects(nonExistingValueDefault, @(8));
 }
 
 - (void)testIntegerFetchingResourceManager {
@@ -88,6 +103,9 @@
     XCTAssertEqual(integerValue, 5);
     NSInteger nonExistingValue = [resourceManager integerForKey:@"notExistingKey"];
     XCTAssertEqual(nonExistingValue, 0);
+    
+    NSInteger nonExistingValueDefault = [resourceManager integerForKey:@"notExistingKeyDefault" defaultValue:8];
+    XCTAssertEqual(nonExistingValueDefault, 8);
 }
 
 - (void)testFloatFetchingResourceManager {
@@ -99,6 +117,9 @@
     XCTAssertEqual(floatValue, 6.7f);
     CGFloat nonExistingValue = [resourceManager floatForKey:@"notExistingKey"];
     XCTAssertEqual(nonExistingValue, 0.0f);
+    
+    NSInteger nonExistingValueDefault = [resourceManager floatForKey:@"notExistingKeyDefault" defaultValue:8.0f];
+    XCTAssertEqual(nonExistingValueDefault, 8.0f);
 }
 
 - (void)testBoolFetchingResourceManager {
@@ -110,6 +131,9 @@
     XCTAssertTrue(boolValue);
     BOOL nonExistingValue = [resourceManager boolForKey:@"notExistingKey"];
     XCTAssertFalse(nonExistingValue);
+    
+    BOOL nonExistingValueDefault = [resourceManager boolForKey:@"notExistingKeyDefault" defaultValue:YES];
+    XCTAssertEqual(nonExistingValueDefault, YES);
 }
 
 - (void)testEdgeInsetsFetchingResourceManager {
@@ -136,6 +160,8 @@
     UIEdgeInsets invalidEdgeInsets4 = [resourceManager edgeInsetsForKey:@"wrongInsetsKey4"];
     XCTAssertTrue(UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsZero, invalidEdgeInsets4));
     
+    UIEdgeInsets nonExistingValueDefault = [resourceManager edgeInsetsForKey:@"notExistingKeyDefault" defaultValue:UIEdgeInsetsMake(1, 2, 55, 12)];
+    XCTAssertTrue(UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsMake(1, 2, 55, 12), nonExistingValueDefault));
 }
 
 - (void)testChangingCriteriasResourceManager {

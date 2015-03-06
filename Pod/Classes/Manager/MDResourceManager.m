@@ -89,6 +89,11 @@
 
 - (id)valueForKey:(NSString *)key {
     
+    return [self valueForKey:key defaultValue:nil];
+}
+
+- (id)valueForKey:(NSString *)key defaultValue:(id)defaultValue {
+
     // TODO proper lazy loading? loadResources it's not really necesary.
     [self loadResources];
     
@@ -97,84 +102,105 @@
     if (!value) {
         
         MDResource *resource = [self.resourceFilter filterResources:self.resources
-                                                 forKey:key];
+                                                             forKey:key];
         
         value = resource.values[key];
         [self cacheValue:value forKey:key];
     }
     
-    return value;
+    return value == nil? defaultValue: value;
 }
 
 - (NSString *)stringForKey:(NSString *)key {
     
+    return [self stringForKey:key defaultValue:nil];
+}
+
+- (NSString *)stringForKey:(NSString *)key defaultValue:(NSString *)defaultValue {
+    
     id value = [self valueForKey:key];
     NSString *stringValue = value;
-    return stringValue;
+    return stringValue == nil? defaultValue: stringValue;
 }
 
 - (NSNumber *)numberForKey:(NSString *)key {
     
+    return [self numberForKey:key defaultValue:nil];
+}
+
+- (NSNumber *)numberForKey:(NSString *)key defaultValue:(NSNumber *)defaultValue {
+    
     id value = [self valueForKey:key];
     NSNumber *numberValue = value;
-    return numberValue;
+    return numberValue == nil? defaultValue: numberValue;
 }
 
 - (NSArray *)arrayForKey:(NSString *)key {
     
+    return [self arrayForKey:key defaultValue:nil];
+}
+
+- (NSArray *)arrayForKey:(NSString *)key defaultValue:(NSArray *)defaultValue {
+    
     id value = [self valueForKey:key];
-    return [value isKindOfClass:[NSArray class]]? value: nil;
+    NSArray *arrayValue = [value isKindOfClass:[NSArray class]]? value: nil;
+    return arrayValue == nil? defaultValue: arrayValue;
 }
 
 - (NSDictionary *)dictionaryForKey:(NSString *)key {
     
+    return [self dictionaryForKey:key defaultValue:nil];
+}
+
+- (NSDictionary *)dictionaryForKey:(NSString *)key defaultValue:(NSDictionary *)defaultValue {
+    
     id value = [self valueForKey:key];
-    return [value isKindOfClass:[NSDictionary class]]? value: nil;
+    NSDictionary *dictionaryValue = [value isKindOfClass:[NSDictionary class]]? value: nil;
+    return dictionaryValue == nil? defaultValue: dictionaryValue;
 }
 
 - (CGFloat)floatForKey:(NSString *)key {
     
-    id value = [self valueForKey:key];
+    return [self floatForKey:key defaultValue:0.0f];
+}
+
+- (CGFloat)floatForKey:(NSString *)key defaultValue:(CGFloat)defaultValue {
     
-    if ([value isKindOfClass:[NSNumber class]]) {
-        
-        NSNumber *numberValue = value;
-        return numberValue.floatValue;
-    } else {
-        
-        return 0.0f;
-    }
+    id value = [self valueForKey:key];
+    NSNumber *numberValue = [value isKindOfClass:[NSNumber class]]? value: nil;
+    return numberValue == nil? defaultValue: numberValue.floatValue;
 }
 
 - (NSInteger)integerForKey:(NSString *)key {
     
-    id value = [self valueForKey:key];
+    return [self integerForKey:key defaultValue:0];
+}
+
+- (NSInteger)integerForKey:(NSString *)key defaultValue:(NSInteger)defaultValue {
     
-    if ([value isKindOfClass:[NSNumber class]]) {
-        
-        NSNumber *numberValue = value;
-        return numberValue.integerValue;
-    } else {
-        
-        return 0;
-    }
+    id value = [self valueForKey:key];
+    NSNumber *numberValue = [value isKindOfClass:[NSNumber class]]? value: nil;
+    return numberValue == nil? defaultValue: numberValue.integerValue;
 }
 
 - (BOOL)boolForKey:(NSString *)key {
     
-    id value = [self valueForKey:key];
+    return [self boolForKey:key defaultValue:NO];
+}
+
+- (BOOL)boolForKey:(NSString *)key defaultValue:(BOOL)defaultValue {
     
-    if ([value isKindOfClass:[NSNumber class]]) {
-        
-        NSNumber *numberValue = value;
-        return numberValue.boolValue;
-    } else {
-        
-        return NO;
-    }
+    id value = [self valueForKey:key];
+    NSNumber *numberValue = [value isKindOfClass:[NSNumber class]]? value: nil;
+    return numberValue == nil? defaultValue: numberValue.boolValue;
 }
 
 - (UIEdgeInsets)edgeInsetsForKey:(NSString *)key {
+    
+    return [self edgeInsetsForKey:key defaultValue:UIEdgeInsetsZero];
+}
+
+- (UIEdgeInsets)edgeInsetsForKey:(NSString *)key defaultValue:(UIEdgeInsets)defaultValue {
     
     id value = [self valueForKey:key];
     
@@ -183,7 +209,7 @@
         NSArray *edgesArray = value;
         
         if (edgesArray.count == 4) {
-           
+            
             return UIEdgeInsetsMake([edgesArray[0] floatValue],
                                     [edgesArray[1] floatValue],
                                     [edgesArray[2] floatValue],
@@ -191,7 +217,7 @@
         }
     }
     
-    return UIEdgeInsetsZero;
+    return defaultValue;
 }
 
 #pragma mark - Manage cache
