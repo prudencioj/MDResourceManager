@@ -174,6 +174,26 @@
     }
 }
 
+- (UIEdgeInsets)edgeInsetsForKey:(NSString *)key {
+    
+    id value = [self valueForKey:key];
+    
+    if ([value isKindOfClass:[NSArray class]]) {
+        
+        NSArray *edgesArray = value;
+        
+        if (edgesArray.count == 4) {
+           
+            return UIEdgeInsetsMake([edgesArray[0] floatValue],
+                                    [edgesArray[1] floatValue],
+                                    [edgesArray[2] floatValue],
+                                    [edgesArray[3] floatValue]);
+        }
+    }
+    
+    return UIEdgeInsetsZero;
+}
+
 #pragma mark - Manage cache
 
 // TODO move this to other class

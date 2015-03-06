@@ -54,5 +54,6 @@
 - (BOOL)boolForKey:(NSString *)key;
 - (NSArray *)arrayForKey:(NSString *)key;
 - (NSDictionary *)dictionaryForKey:(NSString *)key;
+- (UIEdgeInsets)edgeInsetsForKey:(NSString *)key;
 
 @end

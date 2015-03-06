@@ -16,5 +16,32 @@
 	<real>6.7</real>
 	<key>anotherKey</key>
 	<string>anothervalue</string>
+	<key>edgeInsetsKey</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+		<integer>3</integer>
+		<integer>4</integer>
+	</array>
+	<key>wrongInsetsKey1</key>
+	<string>wrongInsetsKey</string>
+	<key>wrongInsetsKey2</key>
+	<integer>2</integer>
+	<key>wrongInsetsKey3</key>
+	<dict>
+		<key>a</key>
+		<string>b</string>
+		<key>c</key>
+		<string>d</string>
+	</dict>
+	<key>wrongInsetsKey4</key>
+	<array/>
+	<key>wrongInsetsKey5</key>
+	<array>
+		<string>a</string>
+		<string>b</string>
+		<string>c</string>
+		<string>4</string>
+	</array>
 </dict>
 </plist>

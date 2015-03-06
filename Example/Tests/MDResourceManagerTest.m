@@ -112,6 +112,32 @@
     XCTAssertFalse(nonExistingValue);
 }
 
+- (void)testEdgeInsetsFetchingResourceManager {
+    
+    MDResourceManager *resourceManager = [[MDResourceManager alloc] initWithPrefixFileName:@"testresource"];
+    [resourceManager loadResources];
+    
+    UIEdgeInsets edgeInsets = [resourceManager edgeInsetsForKey:@"edgeInsetsKey"];
+    XCTAssertTrue(UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsMake(1, 2, 3, 4), edgeInsets));
+    XCTAssertTrue(!UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsMake(5, 2, 6, 1), edgeInsets));
+    
+    UIEdgeInsets nonExistingEdgeInsets1 = [resourceManager edgeInsetsForKey:@"invalidKey"];
+    XCTAssertTrue(UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsZero, nonExistingEdgeInsets1));
+    
+    UIEdgeInsets invalidEdgeInsets1 = [resourceManager edgeInsetsForKey:@"wrongInsetsKey1"];
+    XCTAssertTrue(UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsZero, invalidEdgeInsets1));
+    
+    UIEdgeInsets invalidEdgeInsets2 = [resourceManager edgeInsetsForKey:@"wrongInsetsKey2"];
+    XCTAssertTrue(UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsZero, invalidEdgeInsets2));
+    
+    UIEdgeInsets invalidEdgeInsets3 = [resourceManager edgeInsetsForKey:@"wrongInsetsKey3"];
+    XCTAssertTrue(UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsZero, invalidEdgeInsets3));
+    
+    UIEdgeInsets invalidEdgeInsets4 = [resourceManager edgeInsetsForKey:@"wrongInsetsKey4"];
+    XCTAssertTrue(UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsZero, invalidEdgeInsets4));
+    
+}
+
 - (void)testChangingCriteriasResourceManager {
     
     id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);
