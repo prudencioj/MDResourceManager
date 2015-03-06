@@ -1,3 +1,10 @@
+# Version 0.1.6
+
+#### 2015/03/06
+
+ - Provide defaults when fetching values from resoure manager.
+ - Edge insets accessor.
+
 # Version 0.1.5
 
 #### 2015/03/04
