@@ -11,6 +11,8 @@
 
 @interface MDResourceFilter : NSObject
 
+@property (nonatomic, strong) NSArray *criterias;
+
 - (instancetype)initWithCriterias:(NSArray *)criterias;
 
 - (MDResource *)filterResources:(NSArray *)resources forKey:(NSString *)key;

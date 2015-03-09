@@ -11,8 +11,6 @@
 
 @interface MDResourceFilter ()
 
-@property (nonatomic, strong, readonly) NSArray *criterias;
-
 @end
 
 @implementation MDResourceFilter

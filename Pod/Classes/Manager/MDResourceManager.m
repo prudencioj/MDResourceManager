@@ -7,17 +7,18 @@
 //
 
 #import "MDResourceManager.h"
-#import "MDResourcePropertyListParser.h"
 #import "MDOrientationResourceCriteria.h"
 #import "MDDeviceResourceCriteria.h"
 #import "MDResourceFilter.h"
+#import "MDResourceLoader.h"
 
 @interface MDResourceManager ()
 
 @property (nonatomic, strong, readonly) NSString *prefixFileName;
-@property (nonatomic, strong) NSArray *resources;
+@property (nonatomic, strong, readonly) NSArray *resources;
 
 @property (nonatomic, strong) MDResourceFilter *resourceFilter;
+@property (nonatomic, strong) MDResourceLoader *resourceLoader;
 
 @property (nonatomic, strong) NSCache *cache;
 @property (nonatomic) BOOL canCacheResources;
@@ -37,7 +38,6 @@
         
         _prefixFileName = fileName;
         _criterias = criterias;
-        _resourceFilter = [[MDResourceFilter alloc] initWithCriterias:criterias];
     }
     
     return self;
@@ -52,7 +52,6 @@
         _prefixFileName = fileName;
         _criterias = @[[[MDDeviceResourceCriteria alloc] init],
                        [[MDOrientationResourceCriteria alloc] init]];
-        _resourceFilter = [[MDResourceFilter alloc] initWithCriterias:_criterias];
     }
     
     return self;
@@ -60,12 +59,37 @@
 
 #pragma mark - Properties 
 
+- (MDResourceFilter *)resourceFilter {
+    
+    if (!_resourceFilter) {
+        
+        _resourceFilter = [[MDResourceFilter alloc] initWithCriterias:self.criterias];
+    }
+    
+    return _resourceFilter;
+}
+
+- (MDResourceLoader *)resourceLoader {
+    
+    if (!_resourceLoader) {
+        
+        _resourceLoader = [[MDResourceLoader alloc] init];
+    }
+    
+    return _resourceLoader;
+}
+
+- (NSArray *)resources {
+    
+    return [self.resourceLoader resourcesForPrefixFileName:self.prefixFileName];
+}
+
 - (void)setCriterias:(NSArray *)criterias {
     
     _criterias = criterias;
     
     // create a new instance, or just set a criterias property too?
-    self.resourceFilter = [[MDResourceFilter alloc] initWithCriterias:criterias];
+    self.resourceFilter.criterias = criterias;
     
     // invalidate the cache everytime the criterias change.
     [self invalidateCache];
@@ -75,14 +99,6 @@
 
 - (void)loadResources {
     
-    if (!self.resources) {
-        
-        // FIXME - we should create an instance of the parser.
-        //       - we should have more than one parser, json, plist,xml
-        //       - find a neat way to avoid loading files, that we know will never match our criterias.
-        //         
-        self.resources = [MDResourcePropertyListParser resourcesWithPrefixFileName:self.prefixFileName];
-    }
 }
 
 #pragma mark - Public Fetching values
@@ -93,9 +109,6 @@
 }
 
 - (id)valueForKey:(NSString *)key defaultValue:(id)defaultValue {
-
-    // TODO proper lazy loading? loadResources it's not really necesary.
-    [self loadResources];
     
     id value = [self cachedValueForKey:key];
     
