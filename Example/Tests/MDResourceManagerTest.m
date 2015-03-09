@@ -164,6 +164,25 @@
     XCTAssertTrue(UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsMake(1, 2, 55, 12), nonExistingValueDefault));
 }
 
+- (void)testFontFetchingResourceManager {
+    
+    MDResourceManager *resourceManager = [[MDResourceManager alloc] initWithPrefixFileName:@"testresource"];
+    [resourceManager loadResources];
+    
+    UIFont *font1 = [resourceManager fontForKey:@"fontKey" defaultValue:nil];
+    XCTAssertTrue(font1 != nil);
+    XCTAssertTrue([font1.fontName isEqualToString:@"GillSans"]);
+    XCTAssertTrue(font1.pointSize == 40.0f);
+
+    UIFont *font2 = [resourceManager fontForKey:@"wrongFontKeyWithoutDefault" defaultValue:nil];
+    XCTAssertTrue(font2 == nil);
+
+    UIFont *font3 = [resourceManager fontForKey:@"wrongFontKeyWithDefault" defaultValue:[UIFont fontWithName:@"GillSans" size:40.0]];
+    XCTAssertTrue(font3 != nil);
+    XCTAssertTrue([font3.fontName isEqualToString:@"GillSans"]);
+    XCTAssertTrue(font3.pointSize == 40.0f);
+}
+
 - (void)testChangingCriteriasResourceManager {
     
     id deviceUtilMock = OCMClassMock([MDDeviceUtil class]);

@@ -12,6 +12,9 @@
 #import "MDDeviceResourceCriteria.h"
 #import "MDResourceFilter.h"
 
+static NSString * const kResourceManagerKeyFontName = @"fontName";
+static NSString * const kResourceManagerKeyFontSize = @"fontSize";
+
 @interface MDResourceManager ()
 
 @property (nonatomic, strong, readonly) NSString *prefixFileName;
@@ -214,6 +217,31 @@
                                     [edgesArray[1] floatValue],
                                     [edgesArray[2] floatValue],
                                     [edgesArray[3] floatValue]);
+        }
+    }
+    
+    return defaultValue;
+}
+
+- (UIFont *)fontForKey:(NSString *)key {
+    
+    return [self fontForKey:key defaultValue:nil];
+}
+
+- (UIFont *)fontForKey:(NSString *)key defaultValue:(UIFont *)defaultValue {
+    
+    NSDictionary *fontDict = [self dictionaryForKey:key];
+    if ([fontDict isKindOfClass:[NSDictionary class]]) {
+        
+        UIFont *fontObject = [UIFont fontWithName:fontDict[kResourceManagerKeyFontName]
+                                             size:[fontDict[kResourceManagerKeyFontSize] floatValue]];
+        if (fontObject) {
+            
+            return fontObject;
+        }
+        else {
+            
+            return defaultValue;
         }
     }
     
