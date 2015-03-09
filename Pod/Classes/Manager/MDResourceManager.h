@@ -73,4 +73,7 @@
 - (UIEdgeInsets)edgeInsetsForKey:(NSString *)key;
 - (UIEdgeInsets)edgeInsetsForKey:(NSString *)key defaultValue:(UIEdgeInsets)defaultValue;
 
+- (UIFont *)fontForKey:(NSString *)key;
+- (UIFont *)fontForKey:(NSString *)key defaultValue:(UIFont *)defaultValue;
+
 @end

@@ -43,5 +43,12 @@
 		<string>c</string>
 		<string>4</string>
 	</array>
+	<key>fontKey</key>
+	<dict>
+		<key>fontName</key>
+		<string>GillSans</string>
+		<key>fontSize</key>
+		<real>40.0</real>
+	</dict>
 </dict>
 </plist>
