@@ -67,6 +67,8 @@
                               @"iPhone6,2" :@"iphone5s",
                               @"iPhone7,2" :@"iphone6",
                               @"iPhone7,1" :@"iphone6plus",
+                              @"iPhone8,1" :@"iphone6s",
+                              @"iPhone8,2" :@"iphone6splus",
                               @"i386"      :@"simulator",
                               @"x86_64"    :@"simulator",
                               
