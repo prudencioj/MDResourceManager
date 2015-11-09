@@ -1,3 +1,8 @@
+# Version 0.2.0
+#### 2015/11/09
+
+- Added support for iPhone 6s versions
+
 # Version 0.1.7
 
 #### 2015/03/09
