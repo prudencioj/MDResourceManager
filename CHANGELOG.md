@@ -1,3 +1,8 @@
+# Version 0.2.1
+#### 2016/09/15
+
+- Added support for iPhone SE, iPhone 7 and iPhone 7 Plus versions
+
 # Version 0.2.0
 #### 2015/11/09
 
