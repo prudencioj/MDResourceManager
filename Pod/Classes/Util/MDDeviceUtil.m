@@ -53,20 +53,27 @@
     dispatch_once(&onceToken, ^{
         deviceNamesByCode = @{
                               //iPhones
-                              @"iPhone3,1" :@"iphone4",
-                              @"iPhone3,2" :@"iphone4",
-                              @"iPhone3,3" :@"iphone4",
-                              @"iPhone4,1" :@"iphone4s",
-                              @"iPhone4,2" :@"iphone4s",
-                              @"iPhone4,3" :@"iphone4s",
-                              @"iPhone5,1" :@"iphone5",
-                              @"iPhone5,2" :@"iphone5",
-                              @"iPhone5,3" :@"iphone5c",
-                              @"iPhone5,4" :@"iphone5c",
-                              @"iPhone6,1" :@"iphone5s",
-                              @"iPhone6,2" :@"iphone5s",
-                              @"iPhone7,2" :@"iphone6",
-                              @"iPhone7,1" :@"iphone6plus",
+                              @"iPhone3,1" :@"iphone4",     // iPhone 4
+                              @"iPhone3,2" :@"iphone4",     // iPhone 4
+                              @"iPhone3,3" :@"iphone4",     // iPhone 4
+                              @"iPhone4,1" :@"iphone4s",    // iPhone 4s
+                              @"iPhone4,2" :@"iphone4s",    // iPhone 4s
+                              @"iPhone4,3" :@"iphone4s",    // iPhone 4s
+                              @"iPhone5,1" :@"iphone5",     // iPhone 5
+                              @"iPhone5,2" :@"iphone5",     // iPhone 5
+                              @"iPhone5,3" :@"iphone5c",    // iPhone 5c
+                              @"iPhone5,4" :@"iphone5c",    // iPhone 5c
+                              @"iPhone6,1" :@"iphone5s",    // iPhone 5s
+                              @"iPhone6,2" :@"iphone5s",    // iPhone 5s
+                              @"iPhone7,2" :@"iphone6",     // iPhone 6
+                              @"iPhone7,1" :@"iphone6plus", // iPhone 6 Plus
+                              @"iPhone8,1" :@"iphone6",     // iPhone 6s
+                              @"iPhone8,2" :@"iphone6plus", // iPhone 6s Plus
+                              @"iPhone8,4" :@"iphone5",     // iPhone SE
+                              @"iPhone9,1" :@"iphone6",     // iPhone 7
+                              @"iPhone9,3" :@"iphone6",     // iPhone 7
+                              @"iPhone9,2" :@"iphone6plus", // iPhone 7 Plus
+                              @"iPhone9,4" :@"iphone6plus", // iPhone 7 Plus
                               @"i386"      :@"simulator",
                               @"x86_64"    :@"simulator",
                               

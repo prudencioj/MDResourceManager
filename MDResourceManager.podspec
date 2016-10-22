@@ -1,17 +1,17 @@
 
 Pod::Spec.new do |s|
   s.name             = "MDResourceManager"
-  s.version          = "0.1.7"
+  s.version          = "0.2.1"
   s.summary          = "iOS Resource Management, the Android way"
   s.description      = <<-DESC
                        Provide resources independently of your code. Manage different sizes, strings depending on the device type or orientation.
                        * Inspired in the Resource management of Android.
                        * Easily extended, you can provide your own criterias. e.g. handle different values depending on your product jurisdictions.
                        DESC
-  s.homepage         = "https://github.com/prudencioj/MDResourceManager"
+  s.homepage         = "https://github.com/Mindera/MDResourceManager"
   s.license          = 'MIT'
   s.author           = { "Joao Prudencio" => "joao.prudencio@mindera.com" }
-  s.source           = { :git => "https://github.com/prudencioj/MDResourceManager.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/Mindera/MDResourceManager.git", :tag => s.version.to_s }
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
