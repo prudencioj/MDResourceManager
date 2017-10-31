@@ -74,6 +74,12 @@
                               @"iPhone9,3" :@"iphone6",     // iPhone 7
                               @"iPhone9,2" :@"iphone6plus", // iPhone 7 Plus
                               @"iPhone9,4" :@"iphone6plus", // iPhone 7 Plus
+                              @"iPhone10,1" :@"iphone6",    // iPhone 8
+                              @"iPhone10,4" :@"iphone6",    // iPhone 8
+                              @"iPhone10,2" :@"iphone6plus",// iPhone 8 Plus
+                              @"iPhone10,5" :@"iphone6plus",// iPhone 8 Plus
+                              @"iPhone10,3" :@"iphonex",    // iPhone X
+                              @"iPhone10,6" :@"iphonex",    // iPhone X
                               @"i386"      :@"simulator",
                               @"x86_64"    :@"simulator",
                               
@@ -153,6 +159,9 @@
     } else if(screenHeight == 736) {
         
         return @"iphone6plus";
+    } else if (screenHeight == 812) {
+        
+        return @"iphonex";
     } else {
      
         return @"iphone";
