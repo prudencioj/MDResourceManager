@@ -1,5 +1,5 @@
 # Version 0.3.0
-#### 2016/09/15
+#### 2017/10/31
 
 - Added support for iPhone X, iPhone 8 and iPhone 8 Plus versions
 
